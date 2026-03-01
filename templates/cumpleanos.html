@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cumpleaños · ¡Mateo cumple 7!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@300;400;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #fff8e1;
+            color: #2a1a0a;
+            overflow-x: hidden;
+            line-height: 1.6
+        }
+
+        #confetti {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden
+        }
+
+        .conf {
+            position: absolute;
+            top: -20px;
+            width: 10px;
+            height: 10px;
+            animation: confFall linear infinite
+        }
+
+        @keyframes confFall {
+            0% {
+                transform: translateY(-20px) rotate(0);
+                opacity: 1
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(540deg);
+                opacity: .3
+            }
+        }
+
+        section {
+            position: relative;
+            z-index: 1
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(160deg, #ff6b6b, #ff8e53, #feca57, #48dbfb, #ff9ff3);
+            background-size: 300% 300%;
+            animation: gradShift 8s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 24px;
+            position: relative;
+            overflow: hidden
+        }
+
+        @keyframes gradShift {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        .balloon {
+            font-size: 3rem;
+            animation: balloonFloat 3s ease-in-out infinite;
+            display: inline-block;
+            margin: 0 8px;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, .2))
+        }
+
+        .balloon:nth-child(2) {
+            animation-delay: .5s
+        }
+
+        .balloon:nth-child(3) {
+            animation-delay: 1s
+        }
+
+        @keyframes balloonFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-5deg)
+            }
+
+            50% {
+                transform: translateY(-16px) rotate(5deg)
+            }
+        }
+
+        .hero-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, .9);
+            color: #ff6b6b;
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            padding: 6px 20px;
+            border-radius: 50px;
+            margin: 16px 0 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1)
+        }
+
+        .hero-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(2.5rem, 9vw, 5rem);
+            color: #fff;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, .2), 0 0 40px rgba(255, 255, 255, .3);
+            line-height: 1.1;
+            margin-bottom: 12px
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: rgba(255, 255, 255, .9);
+            font-weight: 700;
+            margin-bottom: 8px
+        }
+
+        .hero-date {
+            background: rgba(255, 255, 255, .25);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, .5);
+            border-radius: 50px;
+            display: inline-block;
+            padding: 10px 28px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 16px 0 32px;
+            letter-spacing: .06em
+        }
+
+        .hero-msg {
+            color: rgba(255, 255, 255, .92);
+            max-width: 480px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin: 0 auto 32px
+        }
+
+        .hero-btn {
+            background: #fff;
+            color: #ff6b6b;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+            transition: .3s;
+            font-family: 'Nunito', sans-serif;
+            letter-spacing: .02em
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, .25)
+        }
+
+        /* COUNTDOWN */
+        .countdown-section {
+            background: #fffbe6;
+            padding: 60px 24px;
+            text-align: center
+        }
+
+        .section-label {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2rem;
+            color: #ff6b6b;
+            margin-bottom: 14px
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 12px
+        }
+
+        .count-box {
+            background: linear-gradient(145deg, #fff, #fff0e0);
+            border: 2px solid rgba(255, 107, 107, .2);
+            border-radius: 20px;
+            padding: 20px 22px;
+            min-width: 80px;
+            box-shadow: 0 4px 16px rgba(255, 107, 107, .1)
+        }
+
+        .count-num {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8rem;
+            color: #ff6b6b;
+            line-height: 1;
+            display: block
+        }
+
+        .count-label {
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: #e88060;
+            margin-top: 4px;
+            font-weight: 700
+        }
+
+        /* ACTIVITIES */
+        .activities {
+            background: linear-gradient(180deg, #fff0fa, #e8f8ff);
+            padding: 80px 24px
+        }
+
+        .activities-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .section-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: #ff6b6b;
+            margin-bottom: 8px
+        }
+
+        .section-sub {
+            color: #e08060;
+            font-size: .9rem;
+            margin-bottom: 44px;
+            font-weight: 600
+        }
+
+        .act-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px
+        }
+
+        .act-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 30px 18px;
+            text-align: center;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, .08);
+            transition: .3s;
+            border: 2px solid transparent
+        }
+
+        .act-card:hover {
+            transform: translateY(-6px);
+            border-color: #feca57;
+            box-shadow: 0 12px 32px rgba(254, 202, 87, .25)
+        }
+
+        .act-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+            animation: wiggle 3s ease-in-out infinite
+        }
+
+        .act-card:nth-child(2) .act-icon {
+            animation-delay: .5s
+        }
+
+        .act-card:nth-child(3) .act-icon {
+            animation-delay: 1s
+        }
+
+        .act-card:nth-child(4) .act-icon {
+            animation-delay: 1.5s
+        }
+
+        @keyframes wiggle {
+
+            0%,
+            100% {
+                transform: rotate(-3deg)
+            }
+
+            50% {
+                transform: rotate(3deg)
+            }
+        }
+
+        .act-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            color: #ff6b6b;
+            margin-bottom: 6px
+        }
+
+        .act-text {
+            font-size: .82rem;
+            color: #8a7060;
+            line-height: 1.5
+        }
+
+        /* DETAILS */
+        .details {
+            background: #fff;
+            padding: 80px 24px
+        }
+
+        .details-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 22px;
+            margin-bottom: 40px
+        }
+
+        .detail-card {
+            background: linear-gradient(145deg, #fff8e1, #ffecd0);
+            border: 2px solid rgba(254, 202, 87, .4);
+            border-radius: 20px;
+            padding: 28px 18px;
+            transition: .3s
+        }
+
+        .detail-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(254, 202, 87, .25)
+        }
+
+        .detail-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block
+        }
+
+        .detail-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            color: #ff8e53;
+            margin-bottom: 6px
+        }
+
+        .detail-text {
+            font-size: .85rem;
+            color: #8a6040;
+            line-height: 1.5
+        }
+
+        /* RSVP */
+        .rsvp-section {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .rsvp-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #fff;
+            margin-bottom: 14px;
+            text-shadow: 0 4px 16px rgba(0, 0, 0, .2)
+        }
+
+        .rsvp-sub {
+            color: rgba(255, 255, 255, .9);
+            margin-bottom: 36px;
+            font-size: .95rem;
+            font-weight: 600
+        }
+
+        .rsvp-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .btn-yes {
+            background: #fff;
+            color: #ff6b6b;
+            padding: 14px 36px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 800;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: .3s;
+            font-family: 'Nunito', sans-serif;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .15)
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .2)
+        }
+
+        .btn-no {
+            background: transparent;
+            color: #fff;
+            padding: 13px 35px;
+            border-radius: 50px;
+            border: 3px solid rgba(255, 255, 255, .7);
+            font-weight: 800;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: .3s;
+            font-family: 'Nunito', sans-serif
+        }
+
+        .btn-no:hover {
+            background: rgba(255, 255, 255, .15)
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(40, 20, 10, .5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px)
+        }
+
+        .modal-overlay.open {
+            display: flex
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 32px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: modalIn .4s cubic-bezier(.34, 1.56, .64, 1);
+            border: 3px solid #feca57;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .2)
+        }
+
+        @keyframes modalIn {
+            from {
+                transform: scale(.85) rotate(-2deg);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1) rotate(0);
+                opacity: 1
+            }
+        }
+
+        .modal h3 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.9rem;
+            color: #ff6b6b;
+            margin-bottom: 10px
+        }
+
+        .modal p {
+            color: #8a6040;
+            margin-bottom: 22px;
+            font-size: .88rem
+        }
+
+        .modal input {
+            width: 100%;
+            border: 2px solid rgba(254, 202, 87, .5);
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: .95rem;
+            margin-bottom: 14px;
+            outline: none;
+            font-family: 'Nunito', sans-serif;
+            color: #2a1a0a;
+            transition: border-color .2s
+        }
+
+        .modal input:focus {
+            border-color: #ff6b6b
+        }
+
+        .modal-btns {
+            display: flex;
+            gap: 10px
+        }
+
+        .btn-confirm {
+            flex: 1;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: #fff;
+            padding: 13px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 800;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-size: .88rem
+        }
+
+        .btn-cancel {
+            padding: 13px 18px;
+            border-radius: 12px;
+            border: 2px solid #feca57;
+            background: #fff;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            color: #e88060;
+            font-size: .88rem;
+            font-weight: 700
+        }
+
+        .modal-wrap {
+            position: relative
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 34px;
+            height: 34px;
+            background: #feca57;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        footer {
+            background: #2a1a0a;
+            color: rgba(255, 255, 255, .55);
+            text-align: center;
+            padding: 36px 24px
+        }
+
+        footer .f-name {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.2rem;
+            color: #feca57;
+            margin-bottom: 8px
+        }
+
+        footer p {
+            font-size: .82rem;
+            font-weight: 300
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #ff6b6b;
+            color: #fff;
+            padding: 13px 28px;
+            border-radius: 50px;
+            font-size: .88rem;
+            font-weight: 700;
+            z-index: 9999;
+            transition: transform .4s cubic-bezier(.34, 1.56, .64, 1);
+            white-space: nowrap;
+            box-shadow: 0 8px 24px rgba(255, 107, 107, .4)
+        }
+
+        @media(max-width:600px) {
+            .rsvp-btns {
+                flex-direction: column;
+                align-items: center
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="confetti"></div>
+    <section class="hero">
+        <div><span class="balloon">🎈</span><span class="balloon">🎉</span><span class="balloon">🎈</span></div>
+        <div class="hero-category">¡Invitación de Cumpleaños!</div>
+        <h1 class="hero-title">¡Mateo cumple 7!</h1>
+        <p class="hero-subtitle">¡La fiesta más divertida del año!</p>
+        <div class="hero-date">📅 Sábado 4 de Abril, 2026 · 4:00 PM</div>
+        <p class="hero-msg">Habrá juegos, pastel, piñata y mucha diversión. ¡Ven a celebrar conmigo!</p>
+        <button class="hero-btn" onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'})">🎊
+            ¡Quiero ir!</button>
+    </section>
+    <section class="countdown-section">
+        <p class="section-label">🎂 ¡El gran día llega en...</p>
+        <div class="countdown">
+            <div class="count-box"><span class="count-num" id="days">--</span><span class="count-label">Días</span>
+            </div>
+            <div class="count-box"><span class="count-num" id="hours">--</span><span class="count-label">Horas</span>
+            </div>
+            <div class="count-box"><span class="count-num" id="minutes">--</span><span
+                    class="count-label">Minutos</span></div>
+            <div class="count-box"><span class="count-num" id="seconds">--</span><span
+                    class="count-label">Segundos</span></div>
+        </div>
+    </section>
+    <section class="activities">
+        <div class="activities-inner">
+            <h2 class="section-title">¡Habrá de Todo!</h2>
+            <p class="section-sub">No te pierdas ni un momento de esta fiesta épica 🎉</p>
+            <div class="act-grid">
+                <div class="act-card"><span class="act-icon">🎠</span>
+                    <p class="act-title">Juegos</p>
+                    <p class="act-text">Inflables, carreras y más sorpresas</p>
+                </div>
+                <div class="act-card"><span class="act-icon">🪅</span>
+                    <p class="act-title">Piñata</p>
+                    <p class="act-text">La piñata más grande que hayas visto</p>
+                </div>
+                <div class="act-card"><span class="act-icon">🎂</span>
+                    <p class="act-title">Pastel</p>
+                    <p class="act-text">Sabor vainilla con sorpresa adentro</p>
+                </div>
+                <div class="act-card"><span class="act-icon">🎁</span>
+                    <p class="act-title">Regalos</p>
+                    <p class="act-text">Mesa de regalos disponible</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="details">
+        <div class="details-inner">
+            <h2 class="section-title"
+                style="font-family:'Fredoka One',cursive;font-size:2.2rem;color:#ff6b6b;margin-bottom:8px">¿Dónde y
+                Cuándo?</h2>
+            <p style="color:#e08060;margin-bottom:36px;font-size:.9rem;font-weight:600">Todo lo que necesitas saber</p>
+            <div class="details-grid">
+                <div class="detail-card"><span class="detail-icon">🏠</span>
+                    <h3 class="detail-title">Lugar</h3>
+                    <p class="detail-text">Casa de Mateo<br />Calle Alegría 25, Col. Feliz</p>
+                </div>
+                <div class="detail-card"><span class="detail-icon">🕓</span>
+                    <h3 class="detail-title">Hora</h3>
+                    <p class="detail-text">4:00 PM – 8:00 PM<br />¡No llegues tarde!</p>
+                </div>
+                <div class="detail-card"><span class="detail-icon">👔</span>
+                    <h3 class="detail-title">Ropa</h3>
+                    <p class="detail-text">Casual y cómoda<br />¡Viene piñata!</p>
+                </div>
+                <div class="detail-card"><span class="detail-icon">📞</span>
+                    <h3 class="detail-title">Info</h3>
+                    <p class="detail-text">Mamá de Mateo<br />+52 55 1234 5678</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="rsvp-section" id="rsvp">
+        <h2 class="rsvp-title">¿Vienes a jugar? 🎊</h2>
+        <p class="rsvp-sub">Confirma antes del 28 de Marzo para separar tu lugar</p>
+        <div class="rsvp-btns">
+            <button class="btn-yes" onclick="openModal(true)">🎉 ¡Sí voy!</button>
+            <button class="btn-no" onclick="openModal(false)">No podré ir 😔</button>
+        </div>
+    </section>
+    <footer>
+        <p class="f-name">¡Feliz Cumpleaños Mateo! 🎂</p>
+        <p>4 de Abril 2026 · ¡Te esperamos con muchas ganas!</p>
+        <p style="margin-top:8px;font-size:.75rem;opacity:.4">Diseñado por Invitur</p>
+    </footer>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-wrap">
+                <button class="modal-close" onclick="closeModal()">✕</button>
+                <h3 id="modalTitle">¡Yay! 🎉</h3>
+                <p id="modalSub">Dinos tu nombre para separar tu lugar en la fiesta.</p>
+                <input type="text" id="guestName" placeholder="Tu nombre" />
+                <div class="modal-btns">
+                    <button class="btn-confirm" onclick="confirmRSVP()">¡Confirmar!</button>
+                    <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="toast"></div>
+    <script>
+        // Confetti
+        const cc = document.getElementById('confetti');
+        const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff', '#5f27cd', '#ff9f43', '#1dd1a1'];
+        function mkConf() {
+            const c = document.createElement('div'); c.className = 'conf';
+            c.style.left = Math.random() * 100 + 'vw'; c.style.background = colors[Math.floor(Math.random() * colors.length)];
+            c.style.width = (6 + Math.random() * 10) + 'px'; c.style.height = (6 + Math.random() * 10) + 'px';
+            c.style.borderRadius = Math.random() > .5 ? '50%' : '2px';
+            c.style.animationDuration = (5 + Math.random() * 8) + 's'; c.style.animationDelay = (Math.random() * 5) + 's';
+            cc.appendChild(c);
+            const dur = (parseFloat(c.style.animationDuration) + parseFloat(c.style.animationDelay)) * 1000 + 200;
+            setTimeout(() => { c.remove(); mkConf() }, dur);
+        }
+        for (let i = 0; i < 24; i++) mkConf();
+        // Countdown
+        const target = new Date('2026-04-04T16:00:00');
+        function tick() { const d = target - Date.now(); if (d <= 0) return; document.getElementById('days').textContent = Math.floor(d / 86400000); document.getElementById('hours').textContent = Math.floor((d % 86400000) / 3600000); document.getElementById('minutes').textContent = Math.floor((d % 3600000) / 60000); document.getElementById('seconds').textContent = Math.floor((d % 60000) / 1000) }
+        tick(); setInterval(tick, 1000);
+        // RSVP
+        let attending = true;
+        function openModal(att) { attending = att; document.getElementById('modalOverlay').classList.add('open'); document.getElementById('modalTitle').textContent = att ? '¡Yay! 🎉' : '¡Nooo! 😢'; document.getElementById('modalSub').textContent = att ? 'Dinos tu nombre para separar tu lugar en la fiesta.' : '¿Por qué no puedes venir?' }
+        function closeModal() { document.getElementById('modalOverlay').classList.remove('open') }
+        function confirmRSVP() { const n = document.getElementById('guestName').value.trim(); if (!n) { document.getElementById('guestName').focus(); return } closeModal(); const t = document.getElementById('toast'); t.textContent = attending ? '🎊 ¡Genial ' + n + '! Mateo te espera con mucha emoción.' : '😢 Qué pena ' + n + '. ¡Gracias por avisar!'; t.style.transform = 'translateX(-50%) translateY(0)'; setTimeout(() => t.style.transform = 'translateX(-50%) translateY(100px)', 4000); document.getElementById('guestName').value = '' }
+        document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal() });
+    </script>
+</body>
+
+</html>

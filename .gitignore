@@ -1,0 +1,4 @@
+# Invitur – dependencies / OS junk
+.DS_Store
+Thumbs.db
+*.log

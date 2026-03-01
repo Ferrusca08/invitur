@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baby Shower · Ana García</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&family=Pacifico&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: #f0fff8;
+            color: #2a4a3a;
+            overflow-x: hidden;
+            line-height: 1.6
+        }
+
+        #floaties {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden
+        }
+
+        .floaty {
+            position: absolute;
+            animation: floatUp linear infinite;
+            opacity: .6
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(110vh) rotate(0);
+                opacity: 0
+            }
+
+            10% {
+                opacity: .6
+            }
+
+            90% {
+                opacity: .6
+            }
+
+            100% {
+                transform: translateY(-40px) rotate(360deg);
+                opacity: 0
+            }
+        }
+
+        section {
+            position: relative;
+            z-index: 1
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(160deg, #e0fff0 0%, #c8f0e0 40%, #d8f8e8 70%, #f0fff8 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 24px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(200, 255, 220, .5), transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(180, 240, 200, .4), transparent 45%)
+        }
+
+        .baby-icon {
+            font-size: 4.5rem;
+            animation: babyFloat 3s ease-in-out infinite;
+            display: block;
+            margin-bottom: 6px;
+            filter: drop-shadow(0 8px 16px rgba(80, 180, 120, .25))
+        }
+
+        @keyframes babyFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1)
+            }
+
+            50% {
+                transform: translateY(-14px) scale(1.06)
+            }
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1.5px solid rgba(80, 180, 120, .35);
+            color: #3a9060;
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            padding: 6px 20px;
+            border-radius: 50px;
+            margin: 14px 0 22px;
+            background: rgba(255, 255, 255, .65);
+            backdrop-filter: blur(8px)
+        }
+
+        .hero-pre {
+            font-family: 'Quicksand', sans-serif;
+            font-size: .95rem;
+            color: #5aab80;
+            letter-spacing: .12em;
+            font-weight: 600;
+            margin-bottom: 6px
+        }
+
+        .hero-name {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            color: #2a7050;
+            text-shadow: 0 4px 20px rgba(60, 160, 100, .15);
+            line-height: 1.2;
+            margin-bottom: 8px
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: #4a9070;
+            font-weight: 600;
+            margin-bottom: 22px
+        }
+
+        .date-row {
+            background: rgba(255, 255, 255, .6);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid rgba(80, 180, 120, .3);
+            border-radius: 50px;
+            display: inline-block;
+            padding: 10px 28px;
+            font-size: .95rem;
+            font-weight: 700;
+            color: #3a8060;
+            margin: 0 0 28px;
+            letter-spacing: .06em
+        }
+
+        .hero-msg {
+            color: #5a8a70;
+            max-width: 440px;
+            font-size: .97rem;
+            line-height: 1.8;
+            margin: 0 auto 34px;
+            font-weight: 500
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #3a9060, #60c090);
+            color: #fff;
+            padding: 13px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .9rem;
+            box-shadow: 0 4px 20px rgba(60, 140, 90, .3);
+            transition: .3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            letter-spacing: .04em
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(60, 140, 90, .45)
+        }
+
+        /* COUNTDOWN */
+        .countdown-section {
+            background: #fff;
+            padding: 60px 24px;
+            text-align: center
+        }
+
+        .section-label {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #5aab80;
+            margin-bottom: 12px
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 14px
+        }
+
+        .count-box {
+            background: linear-gradient(145deg, #f0fff8, #d8f8e8);
+            border: 1.5px solid rgba(80, 180, 120, .25);
+            border-radius: 18px;
+            padding: 20px 22px;
+            min-width: 80px
+        }
+
+        .count-num {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
+            color: #3a9060;
+            line-height: 1;
+            display: block
+        }
+
+        .count-label {
+            font-size: .66rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: #7aab90;
+            margin-top: 4px;
+            font-weight: 700
+        }
+
+        /* GAMES */
+        .games {
+            background: linear-gradient(180deg, #f0fff8, #e8f8f0);
+            padding: 80px 24px
+        }
+
+        .games-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .section-title {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: #2a7050;
+            margin-bottom: 8px
+        }
+
+        .section-sub {
+            color: #6a9880;
+            font-size: .9rem;
+            margin-bottom: 44px;
+            font-weight: 600
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px
+        }
+
+        .game-card {
+            background: #fff;
+            border-radius: 22px;
+            padding: 28px 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(60, 140, 90, .08);
+            transition: .3s;
+            border: 2px solid transparent
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-color: #60c090;
+            box-shadow: 0 10px 28px rgba(60, 140, 90, .14)
+        }
+
+        .game-icon {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+            display: block;
+            animation: bounce 2s ease-in-out infinite
+        }
+
+        .game-card:nth-child(2) .game-icon {
+            animation-delay: .4s
+        }
+
+        .game-card:nth-child(3) .game-icon {
+            animation-delay: .8s
+        }
+
+        .game-card:nth-child(4) .game-icon {
+            animation-delay: 1.2s
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-8px)
+            }
+        }
+
+        .game-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 1rem;
+            color: #3a9060;
+            margin-bottom: 5px
+        }
+
+        .game-text {
+            font-size: .8rem;
+            color: #7a9880;
+            line-height: 1.5
+        }
+
+        /* DETAILS */
+        .details {
+            background: #fff;
+            padding: 80px 24px
+        }
+
+        .details-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px
+        }
+
+        .detail-card {
+            background: linear-gradient(145deg, #f0fff8, #e0f8ec);
+            border: 1.5px solid rgba(80, 180, 120, .2);
+            border-radius: 20px;
+            padding: 28px 18px;
+            transition: .3s
+        }
+
+        .detail-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(60, 140, 90, .1)
+        }
+
+        .detail-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block
+        }
+
+        .detail-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 1rem;
+            color: #3a8060;
+            margin-bottom: 6px
+        }
+
+        .detail-text {
+            font-size: .84rem;
+            color: #6a9070;
+            line-height: 1.55
+        }
+
+        /* RSVP */
+        .rsvp-section {
+            background: linear-gradient(135deg, #2a7050, #3a9060, #60c090);
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .rsvp-title {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #fff;
+            margin-bottom: 14px;
+            text-shadow: 0 4px 16px rgba(0, 0, 0, .15)
+        }
+
+        .rsvp-sub {
+            color: rgba(255, 255, 255, .88);
+            margin-bottom: 36px;
+            font-size: .95rem;
+            font-weight: 600
+        }
+
+        .rsvp-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .btn-yes {
+            background: #fff;
+            color: #2a7050;
+            padding: 14px 36px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: .3s;
+            font-family: 'Quicksand', sans-serif;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .12)
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .18)
+        }
+
+        .btn-no {
+            background: transparent;
+            color: #fff;
+            padding: 13px 35px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, .6);
+            font-weight: 700;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: .3s;
+            font-family: 'Quicksand', sans-serif
+        }
+
+        .btn-no:hover {
+            background: rgba(255, 255, 255, .12)
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 60, 40, .5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px)
+        }
+
+        .modal-overlay.open {
+            display: flex
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 32px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: modalIn .4s cubic-bezier(.34, 1.56, .64, 1);
+            border: 2px solid rgba(80, 180, 120, .25)
+        }
+
+        @keyframes modalIn {
+            from {
+                transform: scale(.85);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        .modal h3 {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8rem;
+            color: #2a7050;
+            margin-bottom: 10px
+        }
+
+        .modal p {
+            color: #6a9070;
+            margin-bottom: 22px;
+            font-size: .88rem
+        }
+
+        .modal input {
+            width: 100%;
+            border: 1.5px solid rgba(80, 180, 120, .35);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: .95rem;
+            margin-bottom: 14px;
+            outline: none;
+            font-family: 'Quicksand', sans-serif;
+            color: #2a4a3a;
+            transition: border-color .2s
+        }
+
+        .modal input:focus {
+            border-color: #3a9060
+        }
+
+        .modal-btns {
+            display: flex;
+            gap: 10px
+        }
+
+        .btn-confirm {
+            flex: 1;
+            background: linear-gradient(135deg, #3a9060, #60c090);
+            color: #fff;
+            padding: 13px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: .88rem
+        }
+
+        .btn-cancel {
+            padding: 13px 18px;
+            border-radius: 10px;
+            border: 1.5px solid rgba(80, 180, 120, .3);
+            background: #fff;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            color: #6a9070;
+            font-size: .88rem
+        }
+
+        .modal-wrap {
+            position: relative
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 34px;
+            height: 34px;
+            background: #fff;
+            border-radius: 50%;
+            border: 1.5px solid rgba(80, 180, 120, .3);
+            cursor: pointer;
+            font-size: 1rem;
+            color: #6a9070;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        footer {
+            background: #1a3a2a;
+            color: rgba(255, 255, 255, .5);
+            text-align: center;
+            padding: 40px 24px
+        }
+
+        footer .f-name {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.2rem;
+            color: #60c090;
+            margin-bottom: 8px
+        }
+
+        footer p {
+            font-size: .82rem;
+            font-weight: 400
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #2a7050;
+            color: #fff;
+            padding: 13px 28px;
+            border-radius: 50px;
+            font-size: .88rem;
+            font-weight: 700;
+            z-index: 9999;
+            transition: transform .4s cubic-bezier(.34, 1.56, .64, 1);
+            white-space: nowrap;
+            box-shadow: 0 8px 24px rgba(40, 110, 70, .35)
+        }
+
+        @media(max-width:600px) {
+            .rsvp-btns {
+                flex-direction: column;
+                align-items: center
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="floaties"></div>
+    <section class="hero">
+        <span class="baby-icon">🌟</span>
+        <div class="tag">Baby Shower</div>
+        <p class="hero-pre">¡Un pequeño tesoro está en camino!</p>
+        <h1 class="hero-name">Baby García</h1>
+        <p class="hero-sub">Celebramos la llegada de Ana y su bebé</p>
+        <div class="date-row">📅 Domingo 8 de Mayo, 2026 · 1:00 PM</div>
+        <p class="hero-msg">Un nuevo corazón está a punto de llegar a nuestras vidas. Ven a celebrar esta dulce espera
+            llena de amor y emoción.</p>
+        <button class="hero-btn" onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'})">🌸
+            Confirmar Asistencia</button>
+    </section>
+    <section class="countdown-section">
+        <p class="section-label">¡La celebración llega en!</p>
+        <div class="countdown">
+            <div class="count-box"><span class="count-num" id="days">--</span><span class="count-label">Días</span>
+            </div>
+            <div class="count-box"><span class="count-num" id="hours">--</span><span class="count-label">Horas</span>
+            </div>
+            <div class="count-box"><span class="count-num" id="minutes">--</span><span
+                    class="count-label">Minutos</span></div>
+            <div class="count-box"><span class="count-num" id="seconds">--</span><span
+                    class="count-label">Segundos</span></div>
+        </div>
+    </section>
+    <section class="games">
+        <div class="games-inner">
+            <h2 class="section-title">¡Habrá Mucha Diversión!</h2>
+            <p class="section-sub">Una tarde llena de amor, ternura y juegos especiales 🌸</p>
+            <div class="game-grid">
+                <div class="game-card"><span class="game-icon">🎀</span>
+                    <h3 class="game-title">Decoración</h3>
+                    <p class="game-text">Ambiente mágico y lleno de ternura</p>
+                </div>
+                <div class="game-card"><span class="game-icon">🎮</span>
+                    <h3 class="game-title">Juegos Divertidos</h3>
+                    <p class="game-text">Adivina el género, memoria del bebé y más</p>
+                </div>
+                <div class="game-card"><span class="game-icon">🍰</span>
+                    <h3 class="game-title">Pastel Sorpresa</h3>
+                    <p class="game-text">¡Gender reveal incluido! ¿Niño o niña?</p>
+                </div>
+                <div class="game-card"><span class="game-icon">🎁</span>
+                    <h3 class="game-title">Mesa de Regalos</h3>
+                    <p class="game-text">Amazon Baby List y Liverpool disponibles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="details">
+        <div class="details-inner">
+            <h2 class="section-title"
+                style="font-family:'Pacifico',cursive;font-size:2.2rem;color:#2a7050;margin-bottom:8px">Detalles del
+                Evento</h2>
+            <p style="color:#6a9880;margin-bottom:36px;font-size:.9rem;font-weight:600">Todo listo para una tarde llena
+                de amor</p>
+            <div class="details-grid">
+                <div class="detail-card"><span class="detail-icon">🏡</span>
+                    <h3 class="detail-title">Lugar</h3>
+                    <p class="detail-text">Jardín de las Mariposas<br />Calle Esperanza 55</p>
+                </div>
+                <div class="detail-card"><span class="detail-icon">🕐</span>
+                    <h3 class="detail-title">Hora</h3>
+                    <p class="detail-text">1:00 PM – 6:00 PM<br />Puntualidad se agradece</p>
+                </div>
+                <div class="detail-card"><span class="detail-icon">🌿</span>
+                    <h3 class="detail-title">Tema</h3>
+                    <p class="detail-text">Jardín · Naturaleza<br />Colores pastel y flores</p>
+                </div>
+                <div class="detail-card"><span class="detail-icon">📞</span>
+                    <h3 class="detail-title">Contacto</h3>
+                    <p class="detail-text">Mamá de Ana · Patricia<br />+52 55 9876 5432</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="rsvp-section" id="rsvp">
+        <p class="section-label" style="color:rgba(255,255,255,.65)">Confirma antes del 1 de Mayo por favor</p>
+        <h2 class="rsvp-title">¿Te unes a la fiesta? 🌸</h2>
+        <p class="rsvp-sub">¡Tu presencia llenará de alegría este momento tan especial para Ana y su bebé!</p>
+        <div class="rsvp-btns">
+            <button class="btn-yes" onclick="openModal(true)">🌟 ¡Ahí estaré!</button>
+            <button class="btn-no" onclick="openModal(false)">No podré ir 😔</button>
+        </div>
+    </section>
+    <footer>
+        <p class="f-name">Baby García 🌟</p>
+        <p>Baby Shower de Ana · 8 de Mayo 2026 · ¡Con todo nuestro amor!</p>
+        <p style="margin-top:8px;font-size:.75rem;opacity:.4">Diseñado por Invitur</p>
+    </footer>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-wrap">
+                <button class="modal-close" onclick="closeModal()">✕</button>
+                <h3 id="modalTitle">¡Qué alegría! 🌸</h3>
+                <p id="modalSub">Déjanos tu nombre para confirmar tu lugar en esta tarde tan especial.</p>
+                <input type="text" id="guestName" placeholder="Tu nombre completo" />
+                <div class="modal-btns">
+                    <button class="btn-confirm" onclick="confirmRSVP()">Confirmar</button>
+                    <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="toast"></div>
+    <script>
+        // Floaties
+        const fc = document.getElementById('floaties');
+        const items = ['🌸', '⭐', '✿', '🌿', '💚', '🌼', '○', '·'];
+        function mkFloat() { const f = document.createElement('span'); f.className = 'floaty'; f.textContent = items[Math.floor(Math.random() * items.length)]; f.style.left = Math.random() * 100 + 'vw'; f.style.fontSize = (10 + Math.random() * 16) + 'px'; const dur = 10 + Math.random() * 14; f.style.animationDuration = dur + 's'; f.style.animationDelay = (Math.random() * 10) + 's'; fc.appendChild(f); setTimeout(() => { f.remove(); mkFloat() }, (dur + parseFloat(f.style.animationDelay)) * 1000 + 200) }
+        for (let i = 0; i < 14; i++)mkFloat();
+        // Countdown
+        const target = new Date('2026-05-08T13:00:00');
+        function tick() { const d = target - Date.now(); if (d <= 0) return; document.getElementById('days').textContent = Math.floor(d / 86400000); document.getElementById('hours').textContent = Math.floor((d % 86400000) / 3600000); document.getElementById('minutes').textContent = Math.floor((d % 3600000) / 60000); document.getElementById('seconds').textContent = Math.floor((d % 60000) / 1000) }
+        tick(); setInterval(tick, 1000);
+        // RSVP
+        let attending = true;
+        function openModal(att) { attending = att; document.getElementById('modalOverlay').classList.add('open'); document.getElementById('modalTitle').textContent = att ? '¡Qué alegría! 🌸' : '¡Qué tristeza! 😢'; document.getElementById('modalSub').textContent = att ? 'Déjanos tu nombre para confirmar tu lugar en esta tarde tan especial.' : '¿Nos puedes hacer saber por qué no podrás asistir?' }
+        function closeModal() { document.getElementById('modalOverlay').classList.remove('open') }
+        function confirmRSVP() { const n = document.getElementById('guestName').value.trim(); if (!n) { document.getElementById('guestName').focus(); return } closeModal(); const t = document.getElementById('toast'); t.textContent = attending ? '🌟 ¡Te esperamos, ' + n + '! Será una tarde llena de amor.' : '💚 Gracias por avisar, ' + n + '. ¡Te llevaremos el pastel!'; t.style.transform = 'translateX(-50%) translateY(0)'; setTimeout(() => t.style.transform = 'translateX(-50%) translateY(100px)', 4500); document.getElementById('guestName').value = '' }
+        document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal() });
+    </script>
+</body>
+
+</html>

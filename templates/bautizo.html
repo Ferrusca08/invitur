@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bautizo · Santiago Morales</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Lato:wght@300;400;700&family=Dancing+Script:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #f0f8ff;
+            color: #1a3a5a;
+            overflow-x: hidden;
+            line-height: 1.6
+        }
+
+        #clouds-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden
+        }
+
+        .cloud {
+            position: absolute;
+            animation: cloudDrift linear infinite;
+            opacity: .55;
+            font-size: 24px
+        }
+
+        @keyframes cloudDrift {
+            0% {
+                transform: translateX(-60px);
+                opacity: 0
+            }
+
+            10% {
+                opacity: .55
+            }
+
+            90% {
+                opacity: .55
+            }
+
+            100% {
+                transform: translateX(110vw);
+                opacity: 0
+            }
+        }
+
+        section {
+            position: relative;
+            z-index: 1
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #dcf0ff 0%, #acd8f8 40%, #d8f0ff 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 24px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, .6), transparent 60%)
+        }
+
+        .dove {
+            font-size: 4.5rem;
+            animation: doveFloat 4s ease-in-out infinite;
+            display: block;
+            margin-bottom: 4px;
+            filter: drop-shadow(0 8px 20px rgba(100, 160, 220, .3))
+        }
+
+        @keyframes doveFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-4deg)
+            }
+
+            50% {
+                transform: translateY(-16px) rotate(4deg)
+            }
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid rgba(100, 160, 220, .3);
+            color: #4a90c8;
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            padding: 6px 20px;
+            border-radius: 50px;
+            margin: 14px 0 22px;
+            background: rgba(255, 255, 255, .6);
+            backdrop-filter: blur(8px)
+        }
+
+        .hero-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            color: #2a6090;
+            text-shadow: 0 4px 20px rgba(80, 140, 200, .2);
+            line-height: 1.2;
+            margin-bottom: 6px
+        }
+
+        .hero-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #5a90c0;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 20px
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 4px auto 20px;
+            width: fit-content
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            display: block;
+            width: 55px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #8ab8e0)
+        }
+
+        .divider span {
+            color: #8ab8e0;
+            font-size: .9rem
+        }
+
+        .date-row {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #4a80b0;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 24px
+        }
+
+        .hero-msg {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #5a80a8;
+            max-width: 480px;
+            line-height: 1.9;
+            margin: 0 auto 36px
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #4a90c8, #78c0f0);
+            color: #fff;
+            padding: 13px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .9rem;
+            box-shadow: 0 4px 20px rgba(80, 160, 220, .3);
+            transition: .3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(80, 160, 220, .45)
+        }
+
+        /* COUNTDOWN */
+        .countdown-section {
+            background: #fff;
+            padding: 60px 24px;
+            text-align: center
+        }
+
+        .section-label {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #78b0d8;
+            margin-bottom: 12px
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 14px
+        }
+
+        .count-box {
+            background: linear-gradient(145deg, #f0f8ff, #d8eef8);
+            border: 1px solid rgba(100, 160, 220, .2);
+            border-radius: 16px;
+            padding: 20px 22px;
+            min-width: 80px
+        }
+
+        .count-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #4a90c8;
+            line-height: 1;
+            display: block
+        }
+
+        .count-label {
+            font-size: .66rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: #88b0d0;
+            margin-top: 4px
+        }
+
+        /* DETAILS */
+        .details {
+            background: linear-gradient(180deg, #e8f4ff, #f8fbff);
+            padding: 80px 24px
+        }
+
+        .details-inner {
+            max-width: 880px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #2a6090;
+            margin-bottom: 8px
+        }
+
+        .section-sub {
+            color: #6a9ab8;
+            font-size: .9rem;
+            margin-bottom: 40px
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 22px;
+            margin-bottom: 40px
+        }
+
+        .detail-card {
+            background: rgba(255, 255, 255, .8);
+            border: 1px solid rgba(100, 160, 220, .2);
+            border-radius: 20px;
+            padding: 30px 18px;
+            transition: .3s;
+            backdrop-filter: blur(8px)
+        }
+
+        .detail-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(80, 140, 200, .12)
+        }
+
+        .detail-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block
+        }
+
+        .detail-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: #2a6090;
+            margin-bottom: 8px;
+            font-weight: 600
+        }
+
+        .detail-text {
+            font-size: .85rem;
+            color: #6a90b0;
+            line-height: 1.6;
+            font-weight: 300
+        }
+
+        /* BLESSING */
+        .blessing {
+            background: #fff;
+            padding: 70px 24px;
+            text-align: center
+        }
+
+        .blessing-inner {
+            max-width: 580px;
+            margin: 0 auto
+        }
+
+        .blessing-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            color: #4a7098;
+            line-height: 1.9;
+            margin-top: 20px;
+            padding: 28px 30px;
+            background: linear-gradient(145deg, #f0f8ff, #e0eef8);
+            border-left: 3px solid #8ab8e0;
+            border-radius: 0 16px 16px 0;
+            text-align: left
+        }
+
+        /* RSVP */
+        .rsvp-section {
+            background: linear-gradient(135deg, #4a90c8, #78c0f0, #b0d8f0);
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .rsvp-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #fff;
+            margin-bottom: 14px;
+            text-shadow: 0 4px 16px rgba(0, 0, 0, .15)
+        }
+
+        .rsvp-sub {
+            color: rgba(255, 255, 255, .85);
+            margin-bottom: 36px;
+            font-size: .95rem
+        }
+
+        .rsvp-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .btn-yes {
+            background: #fff;
+            color: #4a90c8;
+            padding: 14px 36px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: .3s;
+            font-family: 'Lato', sans-serif;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .12)
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .18)
+        }
+
+        .btn-no {
+            background: transparent;
+            color: #fff;
+            padding: 13px 35px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, .6);
+            font-weight: 700;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: .3s;
+            font-family: 'Lato', sans-serif
+        }
+
+        .btn-no:hover {
+            background: rgba(255, 255, 255, .12)
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 50, 90, .5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px)
+        }
+
+        .modal-overlay.open {
+            display: flex
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 32px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: modalIn .4s cubic-bezier(.34, 1.56, .64, 1);
+            border: 1px solid rgba(100, 160, 220, .25)
+        }
+
+        @keyframes modalIn {
+            from {
+                transform: scale(.85);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        .modal h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #2a6090;
+            margin-bottom: 10px
+        }
+
+        .modal p {
+            color: #6a90b0;
+            margin-bottom: 22px;
+            font-size: .88rem
+        }
+
+        .modal input {
+            width: 100%;
+            border: 1px solid rgba(100, 160, 220, .35);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: .95rem;
+            margin-bottom: 14px;
+            outline: none;
+            font-family: 'Lato', sans-serif;
+            color: #1a3a5a;
+            transition: border-color .2s
+        }
+
+        .modal input:focus {
+            border-color: #4a90c8
+        }
+
+        .modal-btns {
+            display: flex;
+            gap: 10px
+        }
+
+        .btn-confirm {
+            flex: 1;
+            background: linear-gradient(135deg, #4a90c8, #78c0f0);
+            color: #fff;
+            padding: 13px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            font-size: .88rem
+        }
+
+        .btn-cancel {
+            padding: 13px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(100, 160, 220, .3);
+            background: #fff;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            color: #6a90b0;
+            font-size: .88rem
+        }
+
+        .modal-wrap {
+            position: relative
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 34px;
+            height: 34px;
+            background: #fff;
+            border-radius: 50%;
+            border: 1px solid rgba(100, 160, 220, .3);
+            cursor: pointer;
+            font-size: 1rem;
+            color: #6a90b0;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        footer {
+            background: #1a3a5a;
+            color: rgba(255, 255, 255, .55);
+            text-align: center;
+            padding: 40px 24px
+        }
+
+        footer .f-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.4rem;
+            color: #78c0f0;
+            margin-bottom: 8px
+        }
+
+        footer p {
+            font-size: .82rem;
+            font-weight: 300
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #2a6090;
+            color: #fff;
+            padding: 13px 28px;
+            border-radius: 50px;
+            font-size: .88rem;
+            font-weight: 600;
+            z-index: 9999;
+            transition: transform .4s cubic-bezier(.34, 1.56, .64, 1);
+            white-space: nowrap;
+            box-shadow: 0 8px 24px rgba(40, 80, 140, .3)
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clouds-bg"></div>
+    <section class="hero">
+        <span class="dove">🕊️</span>
+        <div class="tag">Invitación de Bautizo</div>
+        <h1 class="hero-name">Santiago Morales</h1>
+        <p class="hero-sub">Recibe las Aguas del Bautismo</p>
+        <div class="divider"><span>✦</span></div>
+        <p class="date-row">Domingo · 12 de Junio · 2026</p>
+        <p class="hero-msg">Un ángel llega a nuestras vidas. Con amor y gratitud hacia Dios, nos complace compartir este
+            momento sagrado contigo.</p>
+        <button class="hero-btn" onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'})">🕊️
+            Confirmar Asistencia</button>
+    </section>
+    <section class="countdown-section">
+        <p class="section-label">Este momento sagrado llega en</p>
+        <div class="countdown">
+            <div class="count-box"><span class="count-num" id="days">--</span><span class="count-label">Días</span>
+            </div>
+            <div class="count-box"><span class="count-num" id="hours">--</span><span class="count-label">Horas</span>
+            </div>
+            <div class="count-box"><span class="count-num" id="minutes">--</span><span
+                    class="count-label">Minutos</span></div>
+            <div class="count-box"><span class="count-num" id="seconds">--</span><span
+                    class="count-label">Segundos</span></div>
+        </div>
+    </section>
+    <section class="details">
+        <div class="details-inner">
+            <h2 class="section-title">Detalles del Bautizo</h2>
+            <p class="section-sub">Todo lo que necesitas saber sobre este día tan especial</p>
+            <div class="details-grid">
+                <div class="detail-card"><span class="detail-icon">⛪</span>
+                    <h3 class="detail-title">Iglesia</h3>
+                    <p class="detail-text">Parroquia San Miguel Arcángel<br />12:00 PM – Ceremonia</p>
+                </div>
+                <div class="detail-card"><span class="detail-icon">🥂</span>
+                    <h3 class="detail-title">Convivio</h3>
+                    <p class="detail-text">Salón Los Ángeles<br />2:00 PM – Celebración</p>
+                </div>
+                <div class="detail-card"><span class="detail-icon">📍</span>
+                    <h3 class="detail-title">Ubicación</h3>
+                    <p class="detail-text">Calle Paz y Amor 88<br />Monterrey, N.L.</p>
+                </div>
+                <div class="detail-card"><span class="detail-icon">🎁</span>
+                    <h3 class="detail-title">Mesa de Regalos</h3>
+                    <p class="detail-text">Liverpool #56789<br />Tu amor es suficiente ❤️</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="blessing">
+        <div class="blessing-inner">
+            <p class="section-label">Una Bendición</p>
+            <h2 class="section-title" style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#2a6090">Para
+                Santiago</h2>
+            <p class="blessing-text">"Dejad que los niños vengan a mí, porque de ellos es el reino de los cielos." —
+                Mateo 19:14</p>
+        </div>
+    </section>
+    <section class="rsvp-section" id="rsvp">
+        <p class="section-label" style="color:rgba(255,255,255,.65)">Confirma antes del 5 de Junio · 2026</p>
+        <h2 class="rsvp-title">¿Nos acompañas?</h2>
+        <p class="rsvp-sub">Tu presencia hace este momento aún más sagrado y especial para nuestra familia.</p>
+        <div class="rsvp-btns">
+            <button class="btn-yes" onclick="openModal(true)">🕊️ Con gusto asistiré</button>
+            <button class="btn-no" onclick="openModal(false)">Con pena, no podré</button>
+        </div>
+    </section>
+    <footer>
+        <p class="f-name">Santiago</p>
+        <p>Bautizo · 12 de Junio 2026 · Con amor, familia Morales</p>
+        <p style="margin-top:8px;font-size:.75rem;opacity:.4">Diseñado por Invitur</p>
+    </footer>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-wrap">
+                <button class="modal-close" onclick="closeModal()">✕</button>
+                <h3 id="modalTitle">¡Dios te bendiga! 🕊️</h3>
+                <p id="modalSub">Déjanos tu nombre para confirmar tu lugar en este día sagrado.</p>
+                <input type="text" id="guestName" placeholder="Tu nombre completo" />
+                <div class="modal-btns">
+                    <button class="btn-confirm" onclick="confirmRSVP()">Confirmar</button>
+                    <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="toast"></div>
+    <script>
+        // Clouds
+        const cb = document.getElementById('clouds-bg');
+        function mkCloud() { const c = document.createElement('span'); c.className = 'cloud'; c.textContent = '☁️'; c.style.top = (Math.random() * 60) + 'vh'; c.style.fontSize = (20 + Math.random() * 30) + 'px'; const dur = 20 + Math.random() * 20; c.style.animationDuration = dur + 's'; c.style.animationDelay = (Math.random() * 15) + 's'; cb.appendChild(c); setTimeout(() => { c.remove(); mkCloud() }, (dur + parseFloat(c.style.animationDelay)) * 1000 + 200) }
+        for (let i = 0; i < 8; i++)mkCloud();
+        // Countdown
+        const target = new Date('2026-06-12T12:00:00');
+        function tick() { const d = target - Date.now(); if (d <= 0) return; document.getElementById('days').textContent = Math.floor(d / 86400000); document.getElementById('hours').textContent = Math.floor((d % 86400000) / 3600000); document.getElementById('minutes').textContent = Math.floor((d % 3600000) / 60000); document.getElementById('seconds').textContent = Math.floor((d % 60000) / 1000) }
+        tick(); setInterval(tick, 1000);
+        // RSVP
+        let attending = true;
+        function openModal(att) { attending = att; document.getElementById('modalOverlay').classList.add('open'); document.getElementById('modalTitle').textContent = att ? '¡Dios te bendiga! 🕊️' : '¡Lamentamos mucho! 😢'; document.getElementById('modalSub').textContent = att ? 'Déjanos tu nombre para confirmar tu lugar en este día sagrado.' : '¿Nos puedes hacer saber por qué no podrás asistir?' }
+        function closeModal() { document.getElementById('modalOverlay').classList.remove('open') }
+        function confirmRSVP() { const n = document.getElementById('guestName').value.trim(); if (!n) { document.getElementById('guestName').focus(); return } closeModal(); const t = document.getElementById('toast'); t.textContent = attending ? '🕊️ ¡Te esperamos, ' + n + '! Gracias por compartir este momento sagrado.' : '💙 Que Dios te bendiga siempre, ' + n + '. ¡Gracias por avisarnos!'; t.style.transform = 'translateX(-50%) translateY(0)'; setTimeout(() => t.style.transform = 'translateX(-50%) translateY(100px)', 4500); document.getElementById('guestName').value = '' }
+        document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal() });
+    </script>
+</body>
+
+</html>

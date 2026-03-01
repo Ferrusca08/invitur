@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XV Años · Valeria Jiménez</title>
+    <meta name="description" content="Invitación virtual de XV Años de Valeria Jiménez – 15 de Marzo 2026" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Lato:wght@300;400;700&family=Parisienne&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #1a0828;
+            color: #f0e0f8;
+            overflow-x: hidden;
+            line-height: 1.6
+        }
+
+        /* Sparkles */
+        #sparkles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden
+        }
+
+        .spark {
+            position: absolute;
+            animation: sparkle ease-in-out infinite
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0) rotate(0)
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1) rotate(180deg)
+            }
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 24px;
+            background: radial-gradient(ellipse at 50% 0%, #3d0a5a 0%, #1a0828 60%, #0d0418 100%);
+            position: relative;
+            overflow: hidden;
+            z-index: 1
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(200, 100, 255, .12), transparent 50%), radial-gradient(circle at 70% 70%, rgba(255, 180, 220, .08), transparent 45%)
+        }
+
+        .crown {
+            font-size: 4rem;
+            animation: crownFloat 3s ease-in-out infinite;
+            display: block;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 20px rgba(255, 200, 80, .5))
+        }
+
+        @keyframes crownFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-3deg)
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(3deg)
+            }
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid rgba(200, 140, 255, .4);
+            color: #d098ff;
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            padding: 6px 20px;
+            border-radius: 50px;
+            margin: 12px 0 20px;
+            background: rgba(80, 20, 120, .4);
+            backdrop-filter: blur(8px)
+        }
+
+        .hero-name {
+            font-family: 'Parisienne', cursive;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            color: #f0c8ff;
+            text-shadow: 0 0 40px rgba(200, 100, 255, .5), 0 4px 20px rgba(0, 0, 0, .4);
+            line-height: 1.15;
+            margin-bottom: 6px
+        }
+
+        .hero-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: #c890e8;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 24px
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 12px auto 20px;
+            width: fit-content
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            display: block;
+            width: 55px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c9a060)
+        }
+
+        .divider span {
+            color: #c9a060;
+            font-size: .9rem
+        }
+
+        .date-row {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #d8a8f0;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 28px
+        }
+
+        .hero-msg {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: #c890e0;
+            max-width: 480px;
+            line-height: 1.8;
+            margin: 0 auto 36px
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #8b2fc9, #d470ff);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .9rem;
+            letter-spacing: .04em;
+            box-shadow: 0 4px 24px rgba(180, 80, 255, .4);
+            transition: .3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(180, 80, 255, .55)
+        }
+
+        /* ── COUNTDOWN ── */
+        .countdown-section {
+            background: linear-gradient(180deg, #0d0418, #1a0828);
+            padding: 60px 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1
+        }
+
+        .section-label {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #c9a060;
+            margin-bottom: 12px
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 14px
+        }
+
+        .count-box {
+            background: rgba(80, 20, 120, .5);
+            border: 1px solid rgba(180, 100, 255, .25);
+            border-radius: 16px;
+            padding: 20px 22px;
+            min-width: 80px;
+            backdrop-filter: blur(10px)
+        }
+
+        .count-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #e0a8ff;
+            line-height: 1;
+            display: block
+        }
+
+        .count-label {
+            font-size: .66rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: #a080c8;
+            margin-top: 4px
+        }
+
+        /* ── PROGRAM ── */
+        .program {
+            background: #1a0828;
+            padding: 80px 24px;
+            position: relative;
+            z-index: 1
+        }
+
+        .program-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .section-title {
+            font-family: 'Parisienne', cursive;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #e8b8ff;
+            margin-bottom: 10px
+        }
+
+        .section-sub {
+            color: #a080c0;
+            font-size: .9rem;
+            margin-bottom: 44px
+        }
+
+        .timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, rgba(180, 100, 255, .4), transparent)
+        }
+
+        .tl-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 14px 0;
+            position: relative
+        }
+
+        .tl-item:nth-child(even) {
+            flex-direction: row-reverse
+        }
+
+        .tl-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: .9rem;
+            color: #c9a060;
+            min-width: 80px;
+            text-align: right;
+            font-weight: 600
+        }
+
+        .tl-item:nth-child(even) .tl-time {
+            text-align: left
+        }
+
+        .tl-dot {
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(135deg, #8b2fc9, #d470ff);
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 0 12px rgba(180, 80, 255, .5);
+            z-index: 1
+        }
+
+        .tl-info {
+            flex: 1;
+            background: rgba(80, 20, 120, .35);
+            border: 1px solid rgba(180, 100, 255, .18);
+            border-radius: 14px;
+            padding: 16px 20px;
+            text-align: left
+        }
+
+        .tl-item:nth-child(even) .tl-info {
+            text-align: right
+        }
+
+        .tl-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            color: #e0c0ff;
+            font-weight: 600;
+            margin-bottom: 4px
+        }
+
+        .tl-desc {
+            font-size: .8rem;
+            color: #a080c0;
+            font-weight: 300
+        }
+
+        /* ── DETAILS ── */
+        .details {
+            background: radial-gradient(ellipse at 50% 100%, #2d0848, #0d0418);
+            padding: 80px 24px;
+            position: relative;
+            z-index: 1
+        }
+
+        .details-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 22px;
+            margin-bottom: 40px
+        }
+
+        .detail-card {
+            background: rgba(80, 20, 120, .4);
+            border: 1px solid rgba(180, 100, 255, .2);
+            border-radius: 20px;
+            padding: 30px 18px;
+            transition: .3s;
+            backdrop-filter: blur(10px)
+        }
+
+        .detail-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(200, 140, 255, .5);
+            box-shadow: 0 12px 32px rgba(120, 40, 200, .2)
+        }
+
+        .detail-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block
+        }
+
+        .detail-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #e0b8ff;
+            margin-bottom: 8px;
+            font-weight: 600
+        }
+
+        .detail-text {
+            font-size: .85rem;
+            color: #a080c0;
+            line-height: 1.6;
+            font-weight: 300
+        }
+
+        /* ── DRESS CODE ── */
+        .dress-section {
+            background: #1a0828;
+            padding: 65px 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1
+        }
+
+        .palette {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 24px;
+            flex-wrap: wrap
+        }
+
+        .swatch {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .3), 0 0 12px rgba(180, 80, 255, .2);
+            transition: .2s
+        }
+
+        .swatch:hover {
+            transform: scale(1.15)
+        }
+
+        /* ── RSVP ── */
+        .rsvp-section {
+            background: linear-gradient(135deg, #5a1080, #8b2fc9, #d470ff);
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            overflow: hidden
+        }
+
+        .rsvp-title {
+            font-family: 'Parisienne', cursive;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #fff;
+            margin-bottom: 14px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, .3)
+        }
+
+        .rsvp-sub {
+            color: rgba(255, 255, 255, .8);
+            margin-bottom: 36px;
+            font-size: .95rem
+        }
+
+        .rsvp-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .btn-yes {
+            background: #fff;
+            color: #6a2090;
+            padding: 14px 36px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: .3s;
+            font-family: 'Lato', sans-serif;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .2)
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .3)
+        }
+
+        .btn-no {
+            background: transparent;
+            color: #fff;
+            padding: 13px 35px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, .6);
+            font-weight: 700;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: .3s;
+            font-family: 'Lato', sans-serif
+        }
+
+        .btn-no:hover {
+            background: rgba(255, 255, 255, .12)
+        }
+
+        /* ── MODAL ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 4, 40, .7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px)
+        }
+
+        .modal-overlay.open {
+            display: flex
+        }
+
+        .modal {
+            background: #1e0838;
+            border: 1px solid rgba(180, 100, 255, .3);
+            border-radius: 24px;
+            padding: 40px 32px;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            animation: modalIn .4s cubic-bezier(.34, 1.56, .64, 1)
+        }
+
+        @keyframes modalIn {
+            from {
+                transform: scale(.85);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        .modal h3 {
+            font-family: 'Parisienne', cursive;
+            font-size: 2rem;
+            color: #e0b0ff;
+            margin-bottom: 12px
+        }
+
+        .modal p {
+            color: #a080c0;
+            margin-bottom: 24px;
+            font-size: .88rem
+        }
+
+        .modal input {
+            width: 100%;
+            border: 1px solid rgba(180, 100, 255, .3);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: .95rem;
+            margin-bottom: 14px;
+            outline: none;
+            font-family: 'Lato', sans-serif;
+            color: #f0e0ff;
+            background: rgba(80, 20, 120, .4);
+            transition: border-color .2s
+        }
+
+        .modal input:focus {
+            border-color: #c080ff
+        }
+
+        .modal input::placeholder {
+            color: #806098
+        }
+
+        .modal-btns {
+            display: flex;
+            gap: 10px
+        }
+
+        .btn-confirm {
+            flex: 1;
+            background: linear-gradient(135deg, #8b2fc9, #d470ff);
+            color: #fff;
+            padding: 13px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            font-size: .88rem
+        }
+
+        .btn-cancel {
+            padding: 13px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(180, 100, 255, .3);
+            background: transparent;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            color: #a080c0;
+            font-size: .88rem
+        }
+
+        .modal-wrap {
+            position: relative
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 34px;
+            height: 34px;
+            background: #1e0838;
+            border-radius: 50%;
+            border: 1px solid rgba(180, 100, 255, .3);
+            cursor: pointer;
+            font-size: 1rem;
+            color: #a080c0;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #0a0215;
+            text-align: center;
+            padding: 40px 24px;
+            position: relative;
+            z-index: 1
+        }
+
+        footer .f-name {
+            font-family: 'Parisienne', cursive;
+            font-size: 2.8rem;
+            color: #d098ff;
+            text-shadow: 0 0 20px rgba(180, 80, 255, .3);
+            margin-bottom: 8px
+        }
+
+        footer p {
+            font-size: .82rem;
+            color: rgba(255, 255, 255, .4);
+            font-weight: 300
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #2d0848;
+            border: 1px solid rgba(180, 100, 255, .4);
+            color: #e0c0ff;
+            padding: 13px 28px;
+            border-radius: 50px;
+            font-size: .88rem;
+            font-weight: 600;
+            z-index: 9999;
+            transition: transform .4s cubic-bezier(.34, 1.56, .64, 1);
+            white-space: nowrap;
+            box-shadow: 0 8px 24px rgba(100, 0, 180, .4)
+        }
+
+        @media(max-width:600px) {
+
+            .tl-item,
+            .tl-item:nth-child(even) {
+                flex-direction: column;
+                align-items: flex-start
+            }
+
+            .tl-time {
+                text-align: left
+            }
+
+            .timeline::before {
+                left: 6px
+            }
+
+            .tl-dot {
+                margin-left: 0
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sparkles"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <span class="crown">👑</span>
+        <div class="tag">Invitación de XV Años</div>
+        <h1 class="hero-name">Valeria Jiménez</h1>
+        <p class="hero-sub">Sus XV Primaveras</p>
+        <div class="divider"><span>✦</span></div>
+        <p class="date-row">Sábado · 15 de Marzo · 2026</p>
+        <p class="hero-msg">Hoy comienza el capítulo más mágico de mi historia. Me llena de alegría invitarte a ser
+            parte de este sueño hecho realidad.</p>
+        <a href="#rsvp" class="hero-btn">✨ Confirmar Asistencia</a>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="countdown-section">
+        <p class="section-label">¡El gran día se acerca!</p>
+        <div class="countdown">
+            <div class="count-box"><span class="count-num" id="days">--</span><span class="count-label">Días</span>
+            </div>
+            <div class="count-box"><span class="count-num" id="hours">--</span><span class="count-label">Horas</span>
+            </div>
+            <div class="count-box"><span class="count-num" id="minutes">--</span><span
+                    class="count-label">Minutos</span></div>
+            <div class="count-box"><span class="count-num" id="seconds">--</span><span
+                    class="count-label">Segundos</span></div>
+        </div>
+    </section>
+
+    <!-- PROGRAM / TIMELINE -->
+    <section class="program">
+        <div class="program-inner">
+            <h2 class="section-title">Agenda de la Noche</h2>
+            <p class="section-sub">Una noche llena de momentos mágicos e inolvidables</p>
+            <div class="timeline">
+                <div class="tl-item">
+                    <div class="tl-time">7:00 PM</div>
+                    <div class="tl-dot"></div>
+                    <div class="tl-info">
+                        <p class="tl-name">🚪 Recepción de Invitados</p>
+                        <p class="tl-desc">Cóctel de bienvenida y sesión de fotos</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-time">8:00 PM</div>
+                    <div class="tl-dot"></div>
+                    <div class="tl-info">
+                        <p class="tl-name">👑 Entrada de la Festejada</p>
+                        <p class="tl-desc">El momento más esperado de la noche</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-time">8:30 PM</div>
+                    <div class="tl-dot"></div>
+                    <div class="tl-info">
+                        <p class="tl-name">💃 Vals de Honor</p>
+                        <p class="tl-desc">Baile con chambelanes y brindis especial</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-time">9:00 PM</div>
+                    <div class="tl-dot"></div>
+                    <div class="tl-info">
+                        <p class="tl-name">🍽️ Cena</p>
+                        <p class="tl-desc">Menu de tres tiempos y pastel de XV</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-time">10:00 PM</div>
+                    <div class="tl-dot"></div>
+                    <div class="tl-info">
+                        <p class="tl-name">🎵 Baile y Fiesta</p>
+                        <p class="tl-desc">Pista de baile abierta + shows sorpresa</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-time">1:00 AM</div>
+                    <div class="tl-dot"></div>
+                    <div class="tl-info">
+                        <p class="tl-name">🎆 Cierre Mágico</p>
+                        <p class="tl-desc">Sorpresa de medianoche y despedida</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section class="details">
+        <div class="details-inner">
+            <h2 class="section-title"
+                style="font-family:'Parisienne',cursive;font-size:2.5rem;color:#e8b8ff;margin-bottom:8px">Detalles del
+                Evento</h2>
+            <p style="color:#a080c0;margin-bottom:40px;font-size:.9rem">Todo lo que necesitas saber para esta noche
+                especial</p>
+            <div class="details-grid">
+                <div class="detail-card">
+                    <span class="detail-icon">🏰</span>
+                    <h3 class="detail-title">Salón</h3>
+                    <p class="detail-text">Salón Encantado<br />Av. de las Princesas 300</p>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">🕰️</span>
+                    <h3 class="detail-title">Horario</h3>
+                    <p class="detail-text">7:00 PM – 2:00 AM<br />Puntualidad sugerida</p>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">🎁</span>
+                    <h3 class="detail-title">Mesa de Regalos</h3>
+                    <p class="detail-text">Liverpool #34821<br />Amazon wishlist disponible</p>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">🅿️</span>
+                    <h3 class="detail-title">Estacionamiento</h3>
+                    <p class="detail-text">Zona VIP disponible<br />Valet parking incluido</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="dress-section">
+        <div style="max-width:580px;margin:0 auto">
+            <p class="section-label">Código de vestimenta</p>
+            <h2 class="section-title"
+                style="font-family:'Parisienne',cursive;font-size:2.2rem;color:#e0b8ff;margin-bottom:8px">Glamour &
+                Elegancia</h2>
+            <p style="color:#a080c0;font-size:.88rem;margin-bottom:20px">Evitar el color morado oscuro (reservado para
+                la festejada). Paleta sugerida:</p>
+            <div class="palette">
+                <div class="swatch" style="background:#f8e0ff"></div>
+                <div class="swatch" style="background:#d4a8e8"></div>
+                <div class="swatch" style="background:#c9a060"></div>
+                <div class="swatch" style="background:#f0c0d8"></div>
+                <div class="swatch" style="background:#e8e8f8"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp-section" id="rsvp">
+        <p class="section-label" style="color:rgba(255,255,255,.65)">Confirma antes del 1 de Marzo</p>
+        <h2 class="rsvp-title">¿Me acompañas?</h2>
+        <p class="rsvp-sub">Quiero que seas parte de esta noche de ensueño. ¡Te espero!</p>
+        <div class="rsvp-btns">
+            <button class="btn-yes" onclick="openModal(true)">✨ Sí, estaré ahí</button>
+            <button class="btn-no" onclick="openModal(false)">Con pena, no podré</button>
+        </div>
+    </section>
+
+    <footer>
+        <p class="f-name">Valeria</p>
+        <p>Mis XV Años · 15 de Marzo 2026 · Con todo mi amor</p>
+        <p style="margin-top:8px;font-size:.75rem;opacity:.4">Diseñado por Invitur</p>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-wrap">
+                <button class="modal-close" onclick="closeModal()">✕</button>
+                <h3 id="modalTitle">¡Qué emoción! ✨</h3>
+                <p id="modalSub">Déjame tu nombre para guardar tu lugar esta noche mágica.</p>
+                <input type="text" id="guestName" placeholder="Tu nombre completo" />
+                <div class="modal-btns">
+                    <button class="btn-confirm" onclick="confirmRSVP()">Confirmar</button>
+                    <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="toast"></div>
+
+    <script>
+        // Sparkles
+        const sp = document.getElementById('sparkles');
+        function mkSpark() {
+            const s = document.createElement('div');
+            s.className = 'spark';
+            s.style.left = Math.random() * 100 + 'vw';
+            s.style.top = Math.random() * 100 + 'vh';
+            s.style.width = s.style.height = (4 + Math.random() * 6) + 'px';
+            s.style.background = 'radial-gradient(circle,#fff,#d4a8ff)';
+            s.style.borderRadius = '50%';
+            s.style.animationDuration = (2 + Math.random() * 3) + 's';
+            s.style.animationDelay = (Math.random() * 4) + 's';
+            sp.appendChild(s);
+            setTimeout(() => { s.remove(); mkSpark() }, ((parseFloat(s.style.animationDuration) + parseFloat(s.style.animationDelay)) * 1000) + 500);
+        }
+        for (let i = 0; i < 30; i++) mkSpark();
+
+        // Countdown
+        const target = new Date('2026-03-15T19:00:00');
+        function tick() {
+            const diff = target - Date.now(); if (diff <= 0) return;
+            document.getElementById('days').textContent = Math.floor(diff / 86400000);
+            document.getElementById('hours').textContent = Math.floor((diff % 86400000) / 3600000);
+            document.getElementById('minutes').textContent = Math.floor((diff % 3600000) / 60000);
+            document.getElementById('seconds').textContent = Math.floor((diff % 60000) / 1000);
+        }
+        tick(); setInterval(tick, 1000);
+
+        // RSVP Modal
+        let attending = true;
+        function openModal(att) { attending = att; document.getElementById('modalOverlay').classList.add('open'); if (att) { document.getElementById('modalTitle').textContent = '¡Qué emoción! ✨'; document.getElementById('modalSub').textContent = 'Déjame tu nombre para guardar tu lugar esta noche mágica.' } else { document.getElementById('modalTitle').textContent = '¡Qué tristeza! 🌙'; document.getElementById('modalSub').textContent = '¿Nos haces saber por qué no podrás asistir?' } }
+        function closeModal() { document.getElementById('modalOverlay').classList.remove('open') }
+        function confirmRSVP() {
+            const name = document.getElementById('guestName').value.trim();
+            if (!name) { document.getElementById('guestName').focus(); return }
+            closeModal();
+            const t = document.getElementById('toast');
+            t.textContent = attending ? '✨ ¡Te espero ' + name + '! Esta noche será mágica.' : '🌙 Te voy a extrañar, ' + name + '. ¡Gracias por avisarme!';
+            t.style.transform = 'translateX(-50%) translateY(0)';
+            setTimeout(() => t.style.transform = 'translateX(-50%) translateY(100px)', 4500);
+            document.getElementById('guestName').value = '';
+        }
+        document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal() });
+    </script>
+</body>
+
+</html>

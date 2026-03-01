@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boda · Isabella & Leonardo</title>
+    <meta name="description" content="Invitación virtual de boda de Isabella y Leonardo – 20 de Septiembre 2026" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Lato:wght@300;400&family=Great+Vibes&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #fdf6ef;
+            color: #3a2a1a;
+            overflow-x: hidden;
+            line-height: 1.6
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        /* Particles */
+        #particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden
+        }
+
+        .p {
+            position: absolute;
+            top: -30px;
+            font-size: 14px;
+            animation: fall linear infinite;
+            opacity: 0.55
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-30px) rotate(0) translateX(0);
+                opacity: .6
+            }
+
+            50% {
+                transform: translateY(50vh) rotate(200deg) translateX(25px)
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg) translateX(-20px);
+                opacity: 0
+            }
+        }
+
+        /* ── Sections base ── */
+        section {
+            position: relative;
+            z-index: 1
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 24px;
+            background: linear-gradient(160deg, #fff5f0 0%, #fde8de 50%, #f8d5c8 100%);
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 30%, rgba(212, 172, 120, .18), transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(232, 160, 140, .15), transparent 55%);
+            pointer-events: none
+        }
+
+        .hero-flourish {
+            font-size: 2.8rem;
+            animation: bloom 4s ease-in-out infinite
+        }
+
+        @keyframes bloom {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(-3deg)
+            }
+
+            50% {
+                transform: scale(1.1) rotate(3deg)
+            }
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid rgba(180, 110, 80, .3);
+            color: #a06040;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            padding: 6px 20px;
+            border-radius: 50px;
+            margin: 16px 0 20px;
+            background: rgba(255, 255, 255, .5);
+            backdrop-filter: blur(8px)
+        }
+
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: #8a4830;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(180, 90, 60, .15)
+        }
+
+        .ampersand {
+            color: #c9a060;
+            font-size: .8em
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 20px auto;
+            width: fit-content
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c9a060)
+        }
+
+        .divider span {
+            color: #c9a060;
+            font-size: 1rem
+        }
+
+        .date-row {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: #8a6050;
+            letter-spacing: .2em;
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-bottom: 28px
+        }
+
+        .hero-msg {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-style: italic;
+            color: #7a5040;
+            max-width: 500px;
+            line-height: 1.8;
+            margin: 0 auto 36px
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: #b0806070;
+            font-size: .7rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            animation: bob 2s ease-in-out infinite
+        }
+
+        @keyframes bob {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0)
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-8px)
+            }
+        }
+
+        .scroll-hint::after {
+            content: '↓';
+            font-size: 1.2rem
+        }
+
+        /* ── COUNTDOWN ── */
+        .countdown-section {
+            background: #fff;
+            padding: 60px 24px;
+            text-align: center
+        }
+
+        .section-label {
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #c9a060;
+            margin-bottom: 14px
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 16px
+        }
+
+        .count-box {
+            background: linear-gradient(145deg, #fff8f2, #fdeede);
+            border: 1px solid rgba(200, 160, 90, .2);
+            border-radius: 16px;
+            padding: 20px 24px;
+            min-width: 80px;
+            box-shadow: 0 4px 16px rgba(180, 120, 60, .08)
+        }
+
+        .count-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #8a4830;
+            line-height: 1;
+            display: block
+        }
+
+        .count-label {
+            font-size: .68rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: #b09080;
+            margin-top: 4px
+        }
+
+        /* ── DETAILS ── */
+        .details {
+            background: linear-gradient(160deg, #fdf0e8, #fae0d0);
+            padding: 80px 24px
+        }
+
+        .details-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 300;
+            color: #5a3020;
+            margin-bottom: 50px
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px
+        }
+
+        .detail-card {
+            background: rgba(255, 255, 255, .7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(200, 160, 90, .2);
+            border-radius: 20px;
+            padding: 32px 20px;
+            transition: transform .3s ease, box-shadow .3s ease
+        }
+
+        .detail-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(180, 100, 60, .12)
+        }
+
+        .detail-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block
+        }
+
+        .detail-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #6a3820;
+            margin-bottom: 8px
+        }
+
+        .detail-text {
+            font-size: .88rem;
+            color: #8a6050;
+            line-height: 1.6;
+            font-weight: 300
+        }
+
+        /* ── DRESS CODE ── */
+        .dress-section {
+            background: #fff;
+            padding: 70px 24px;
+            text-align: center
+        }
+
+        .dress-inner {
+            max-width: 600px;
+            margin: 0 auto
+        }
+
+        .palette {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 24px;
+            flex-wrap: wrap
+        }
+
+        .swatch {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+            transition: transform .2s
+        }
+
+        .swatch:hover {
+            transform: scale(1.12)
+        }
+
+        /* ── RSVP ── */
+        .rsvp-section {
+            background: linear-gradient(135deg, #8a4830, #c9a060);
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .rsvp-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 10 C30 10,35 20,30 30 C25 20,30 10,30 10Z'/%3E%3C/g%3E%3C/svg%3E")
+        }
+
+        .rsvp-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #fff;
+            margin-bottom: 16px
+        }
+
+        .rsvp-sub {
+            color: rgba(255, 255, 255, .8);
+            margin-bottom: 36px;
+            font-size: .95rem
+        }
+
+        .rsvp-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .btn-yes {
+            background: #fff;
+            color: #8a4830;
+            padding: 14px 36px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: .3s;
+            font-family: 'Lato', sans-serif;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .15)
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .2)
+        }
+
+        .btn-no {
+            background: transparent;
+            color: #fff;
+            padding: 13px 35px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, .6);
+            font-weight: 700;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: .3s;
+            font-family: 'Lato', sans-serif
+        }
+
+        .btn-no:hover {
+            background: rgba(255, 255, 255, .1);
+            border-color: #fff
+        }
+
+        /* ── MODAL ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(60, 20, 10, .5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px)
+        }
+
+        .modal-overlay.open {
+            display: flex
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 32px;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            animation: modalIn .4s cubic-bezier(.34, 1.56, .64, 1)
+        }
+
+        @keyframes modalIn {
+            from {
+                transform: scale(.85);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        .modal h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #5a3020;
+            margin-bottom: 12px
+        }
+
+        .modal p {
+            color: #8a6050;
+            margin-bottom: 24px;
+            font-size: .9rem
+        }
+
+        .modal input {
+            width: 100%;
+            border: 1px solid rgba(200, 160, 90, .4);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: .95rem;
+            margin-bottom: 14px;
+            outline: none;
+            font-family: 'Lato', sans-serif;
+            transition: border-color .2s;
+            color: #3a2a1a;
+            background: #fff
+        }
+
+        .modal input:focus {
+            border-color: #c9a060
+        }
+
+        .modal-btns {
+            display: flex;
+            gap: 10px
+        }
+
+        .btn-confirm {
+            flex: 1;
+            background: linear-gradient(135deg, #8a4830, #c9a060);
+            color: #fff;
+            padding: 13px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            font-size: .88rem
+        }
+
+        .btn-cancel {
+            padding: 13px 20px;
+            border-radius: 10px;
+            border: 1px solid #e0d0c0;
+            background: #fff;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            color: #8a6050;
+            font-size: .88rem
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 34px;
+            height: 34px;
+            background: #fff;
+            border-radius: 50%;
+            border: 1px solid #e0d0c0;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .modal-wrap {
+            position: relative
+        }
+
+        /* ── MAP ── */
+        .map-section {
+            background: #faf3ec;
+            padding: 70px 24px;
+            text-align: center
+        }
+
+        .map-placeholder {
+            max-width: 700px;
+            margin: 24px auto 0;
+            height: 260px;
+            background: linear-gradient(145deg, #e8d8c8, #d8c8b0);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+            border: 1px solid rgba(200, 160, 90, .2);
+            font-family: 'Cormorant Garamond', serif;
+            color: #8a6050;
+            font-size: 1.1rem
+        }
+
+        .map-btn {
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #8a4830, #c9a060);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: .88rem;
+            font-weight: 700;
+            transition: .3s
+        }
+
+        .map-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(138, 72, 48, .3)
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #3a2010;
+            color: rgba(255, 255, 255, .6);
+            text-align: center;
+            padding: 40px 24px
+        }
+
+        footer .f-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, .85);
+            margin-bottom: 8px
+        }
+
+        footer p {
+            font-size: .82rem;
+            font-weight: 300
+        }
+
+        @media(max-width:600px) {
+            .rsvp-btns {
+                flex-direction: column;
+                align-items: center
+            }
+
+            .rsvp-btns button,
+            .rsvp-btns .btn-yes,
+            .rsvp-btns .btn-no {
+                width: 240px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-flourish">🌸</div>
+        <div class="tag">Invitación de Boda</div>
+        <h1 class="names">Isabella <span class="ampersand">&</span> Leonardo</h1>
+        <div class="divider"><span>✦</span></div>
+        <p class="date-row">Sábado · 20 de Septiembre · 2026</p>
+        <p class="hero-msg">Dos almas, una historia, un día eterno.<br />Nos complace invitarte a celebrar el inicio de
+            nuestra vida juntos.</p>
+        <a href="#rsvp" class="tag" style="margin-top:0">Confirmar Asistencia ↓</a>
+        <div class="scroll-hint"></div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="countdown-section">
+        <p class="section-label">Faltan</p>
+        <div class="countdown">
+            <div class="count-box"><span class="count-num" id="days">--</span><span class="count-label">Días</span>
+            </div>
+            <div class="count-box"><span class="count-num" id="hours">--</span><span class="count-label">Horas</span>
+            </div>
+            <div class="count-box"><span class="count-num" id="minutes">--</span><span
+                    class="count-label">Minutos</span></div>
+            <div class="count-box"><span class="count-num" id="seconds">--</span><span
+                    class="count-label">Segundos</span></div>
+        </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section class="details">
+        <div class="details-inner">
+            <h2 class="section-title">Detalles del Gran Día</h2>
+            <div class="details-grid">
+                <div class="detail-card">
+                    <span class="detail-icon">💒</span>
+                    <h3 class="detail-title">Ceremonia</h3>
+                    <p class="detail-text">Iglesia de La Sagrada Familia<br />4:00 PM</p>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">🥂</span>
+                    <h3 class="detail-title">Recepción</h3>
+                    <p class="detail-text">Jardín El Paraíso<br />6:00 PM – Medianoche</p>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">📍</span>
+                    <h3 class="detail-title">Ubicación</h3>
+                    <p class="detail-text">Calle de los Sueños 142<br />Guadalajara, Jalisco</p>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">🎵</span>
+                    <h3 class="detail-title">Música</h3>
+                    <p class="detail-text">Banda en vivo + DJ<br />Pista de baile hasta medianoche</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="dress-section">
+        <div class="dress-inner">
+            <p class="section-label">Código de vestimenta</p>
+            <h2 class="section-title" style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:#5a3020">
+                Formal Elegante</h2>
+            <p style="color:#8a6050;font-size:.9rem;margin-bottom:20px">Evitar blanco e intensos neones. Los colores de
+                la boda son:</p>
+            <div class="palette">
+                <div class="swatch" style="background:#f5e6d3" title="Crema"></div>
+                <div class="swatch" style="background:#e8b4a0" title="Rosse"></div>
+                <div class="swatch" style="background:#c9a060" title="Dorado"></div>
+                <div class="swatch" style="background:#8a4830" title="Terracota"></div>
+                <div class="swatch" style="background:#5a3020" title="Marrón"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp-section" id="rsvp">
+        <p class="section-label" style="color:rgba(255,255,255,.7)">Por favor confirma antes del 1 de Septiembre</p>
+        <h2 class="rsvp-title">¿Nos acompañas?</h2>
+        <p class="rsvp-sub">Tu presencia es el mejor regalo que nos puedes dar.</p>
+        <div class="rsvp-btns">
+            <button class="btn-yes" onclick="openModal(true)">💕 Sí, asistiré</button>
+            <button class="btn-no" onclick="openModal(false)">Con pena, no podré</button>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="map-section">
+        <p class="section-label">¿Cómo Llegar?</p>
+        <h2 class="section-title" style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:#5a3020">
+            Ubicación del Evento</h2>
+        <div class="map-placeholder">
+            <span style="font-size:2.5rem">📍</span>
+            <span>Jardín El Paraíso</span>
+            <span style="font-size:.82rem;color:#a09080">Calle de los Sueños 142, Guadalajara, Jalisco</span>
+        </div>
+        <a href="https://maps.google.com" target="_blank" class="map-btn">📍 Abrir en Google Maps</a>
+    </section>
+
+    <footer>
+        <p class="f-names">Isabella & Leonardo</p>
+        <p>Con todo nuestro amor, los esperamos · 20 · Sep · 2026</p>
+        <p style="margin-top:8px;font-size:.75rem;opacity:.5">Diseñado por Invitur</p>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-wrap">
+                <button class="modal-close" onclick="closeModal()">✕</button>
+                <h3 id="modalTitle">¡Qué alegría! 💕</h3>
+                <p id="modalSub">Por favor déjanos tu nombre para confirmar tu lugar.</p>
+                <input type="text" id="guestName" placeholder="Tu nombre completo" />
+                <input type="number" id="guestCount" placeholder="Número de asistentes" min="1" max="5"
+                    style="display:none" />
+                <div class="modal-btns">
+                    <button class="btn-confirm" onclick="confirmRSVP()">Confirmar</button>
+                    <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast"
+        style="position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(100px);background:#3a2010;color:#fff;padding:13px 28px;border-radius:50px;font-size:.88rem;font-weight:600;z-index:9999;transition:transform .4s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.2)">
+    </div>
+
+    <script>
+        // Particles
+        const pe = document.getElementById('particles');
+        const petals = ['🌸', '🌺', '🌹', '✿', '❀'];
+        function mkPetal() {
+            const p = document.createElement('span');
+            p.className = 'p';
+            p.textContent = petals[Math.floor(Math.random() * petals.length)];
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.fontSize = (10 + Math.random() * 10) + 'px';
+            p.style.animationDuration = (9 + Math.random() * 9) + 's';
+            p.style.animationDelay = (Math.random() * 6) + 's';
+            pe.appendChild(p);
+            const dur = (parseFloat(p.style.animationDuration) + parseFloat(p.style.animationDelay)) * 1000 + 300;
+            setTimeout(() => { p.remove(); mkPetal() }, dur);
+        }
+        for (let i = 0; i < 14; i++) mkPetal();
+
+        // Countdown
+        const target = new Date('2026-09-20T16:00:00');
+        function tick() {
+            const diff = target - Date.now();
+            if (diff <= 0) { document.getElementById('days').textContent = '0'; return }
+            document.getElementById('days').textContent = Math.floor(diff / 86400000);
+            document.getElementById('hours').textContent = Math.floor((diff % 86400000) / 3600000);
+            document.getElementById('minutes').textContent = Math.floor((diff % 3600000) / 60000);
+            document.getElementById('seconds').textContent = Math.floor((diff % 60000) / 1000);
+        }
+        tick(); setInterval(tick, 1000);
+
+        // RSVP Modal
+        let attending = true;
+        function openModal(att) { attending = att; const o = document.getElementById('modalOverlay'); o.classList.add('open'); if (att) { document.getElementById('modalTitle').textContent = '¡Qué alegría! 💕'; document.getElementById('modalSub').textContent = 'Por favor déjanos tu nombre para confirmar tu lugar.'; document.getElementById('guestCount').style.display = 'block' } else { document.getElementById('modalTitle').textContent = '¡Qué pena! 😢'; document.getElementById('modalSub').textContent = '¿Nos dejas saber por qué no podrás asistir?'; document.getElementById('guestCount').style.display = 'none' } }
+        function closeModal() { document.getElementById('modalOverlay').classList.remove('open') }
+        function confirmRSVP() {
+            const name = document.getElementById('guestName').value.trim();
+            if (!name) { document.getElementById('guestName').focus(); return }
+            closeModal();
+            const t = document.getElementById('toast');
+            t.textContent = attending ? '💕 ¡Genial ' + name + '! Te esperamos con amor.' : '😢 Te extrañaremos, ' + name + '. ¡Gracias por avisarnos!';
+            t.style.transform = 'translateX(-50%) translateY(0)';
+            setTimeout(() => t.style.transform = 'translateX(-50%) translateY(100px)', 4000);
+            document.getElementById('guestName').value = '';
+        }
+        document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal() });
+    </script>
+</body>
+
+</html>

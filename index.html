@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitaciones Virtuales para Todo Evento | Invitur</title>
+    <meta name="description"
+        content="Invitaciones digitales elegantes para bodas, XV años, cumpleaños, bautizos y más. Diseños animados, personalizados y entrega en 24 horas." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&family=Great+Vibes&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <!-- Floating Petals -->
+    <div class="petals-container" id="petals"></div>
+
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-script">Invite</span><span class="logo-text">Script</span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#eventos" class="nav-link">Eventos</a>
+                <a href="#colecciones" class="nav-link">Colecciones</a>
+                <a href="#como-funciona" class="nav-link">Cómo Funciona</a>
+                <a href="#testimonios" class="nav-link">Testimonios</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </button>
+                <a href="#contacto" class="btn-primary nav-cta">Comenzar</a>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#inicio" class="mobile-link">Inicio</a>
+            <a href="#eventos" class="mobile-link">Eventos</a>
+            <a href="#colecciones" class="mobile-link">Colecciones</a>
+            <a href="#como-funciona" class="mobile-link">Cómo Funciona</a>
+            <a href="#testimonios" class="mobile-link">Testimonios</a>
+            <a href="#contacto" class="mobile-link">Contacto</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg">
+            <div class="hero-circle circle-1"></div>
+            <div class="hero-circle circle-2"></div>
+            <div class="hero-circle circle-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge fade-up">✨ Invitaciones Digitales para Cada Ocasión</div>
+            <h1 class="hero-title fade-up">Celebra cada momento,<br /><em>con estilo digital</em></h1>
+            <p class="hero-subtitle fade-up">
+                Invitaciones virtuales únicas para bodas, XV años, cumpleaños, bautizos y más.<br />
+                Animadas, personalizadas y compartidas en segundos.
+            </p>
+            <div class="hero-actions fade-up">
+                <a href="#colecciones" class="btn-primary">Ver Colecciones</a>
+                <a href="#como-funciona" class="btn-outline">Cómo Funciona</a>
+            </div>
+            <div class="hero-stats fade-up">
+                <div class="stat">
+                    <span class="stat-number" data-target="3800">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">Eventos Realizados</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span>
+                    <span class="stat-label">Satisfacción</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="24">0</span><span class="stat-suffix">h</span>
+                    <span class="stat-label">Entrega</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-mockup fade-right">
+            <div class="mockup-phone">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <div class="invite-preview">
+                        <div class="invite-flower">🎉</div>
+                        <p class="invite-title-s">Valeria Jiménez</p>
+                        <p class="invite-date-s">XV · Años · 2026</p>
+                        <div class="invite-divider-s"></div>
+                        <p class="invite-msg-s">Me complace invitarte</p>
+                        <button class="invite-rsvp-s">Confirmar Asistencia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Strip -->
+    <section class="features-strip">
+        <div class="features-container">
+            <div class="feature-item">
+                <span class="feature-icon">💍</span>
+                <span>Bodas</span>
+            </div>
+            <div class="feature-sep">·</div>
+            <div class="feature-item">
+                <span class="feature-icon">👑</span>
+                <span>XV Años</span>
+            </div>
+            <div class="feature-sep">·</div>
+            <div class="feature-item">
+                <span class="feature-icon">🎂</span>
+                <span>Cumpleaños</span>
+            </div>
+            <div class="feature-sep">·</div>
+            <div class="feature-item">
+                <span class="feature-icon">🕊️</span>
+                <span>Bautizos</span>
+            </div>
+            <div class="feature-sep">·</div>
+            <div class="feature-item">
+                <span class="feature-icon">🎓</span>
+                <span>Graduaciones</span>
+            </div>
+            <div class="feature-sep">·</div>
+            <div class="feature-item">
+                <span class="feature-icon">🥂</span>
+                <span>Aniversarios</span>
+            </div>
+            <div class="feature-sep">·</div>
+            <div class="feature-item">
+                <span class="feature-icon">🎪</span>
+                <span>Fiestas Temáticas</span>
+            </div>
+            <div class="feature-sep">·</div>
+            <div class="feature-item">
+                <span class="feature-icon">🌟</span>
+                <span>Baby Shower</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Types Section -->
+    <section class="collections" id="eventos">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Tipos de Evento</span>
+                <h2 class="section-title">Tenemos una invitación para cada celebración</h2>
+                <p class="section-sub">Sin importar el tipo de evento, creamos la invitación digital perfecta para tu
+                    gran día.</p>
+            </div>
+
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-icon">💍</div>
+                    <h3 class="event-name">Bodas</h3>
+                    <p class="event-desc">Elegancia y romanticismo para el día más especial. Con música, galería de
+                        fotos y RSVP en tiempo real.</p>
+                    <a href="#colecciones" class="event-link">Ver diseños →</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-icon">👑</div>
+                    <h3 class="event-name">XV Años</h3>
+                    <p class="event-desc">Mágico y soñador. Colores vibrantes, animaciones de princesa y countdown
+                        personalizado.</p>
+                    <a href="#colecciones" class="event-link">Ver diseños →</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-icon">🎂</div>
+                    <h3 class="event-name">Cumpleaños</h3>
+                    <p class="event-desc">Para niños, adultos o ambos. Temáticas infinitas con animaciones divertidas y
+                        únicas.</p>
+                    <a href="#colecciones" class="event-link">Ver diseños →</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-icon">🕊️</div>
+                    <h3 class="event-name">Bautizos</h3>
+                    <p class="event-desc">Delicado y tierno. Tonos pastel, ángeles animados y diseños llenos de dulzura.
+                    </p>
+                    <a href="#colecciones" class="event-link">Ver diseños →</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-icon">🎓</div>
+                    <h3 class="event-name">Graduaciones</h3>
+                    <p class="event-desc">Celebra el logro con estilo. Diseños modernos y elegantes para compartir este
+                        gran paso.</p>
+                    <a href="#colecciones" class="event-link">Ver diseños →</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-icon">🌟</div>
+                    <h3 class="event-name">Baby Shower</h3>
+                    <p class="event-desc">Dulce y emocionante. Colores frescos, nubes y estrellas para dar la bienvenida
+                        al bebé.</p>
+                    <a href="#colecciones" class="event-link">Ver diseños →</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-icon">🥂</div>
+                    <h3 class="event-name">Aniversarios</h3>
+                    <p class="event-desc">Renueva el amor cada año. Diseños cálidos y nostálgicos con galería de
+                        recuerdos.</p>
+                    <a href="#colecciones" class="event-link">Ver diseños →</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-icon">🎪</div>
+                    <h3 class="event-name">Eventos Corporativos</h3>
+                    <p class="event-desc">Profesional y elegante. Para congresos, lanzamientos, cenas de empresa y más.
+                    </p>
+                    <a href="#colecciones" class="event-link">Ver diseños →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section class="collections collections-alt" id="colecciones">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Colecciones</span>
+                <h2 class="section-title">Diseños para cada estilo y ocasión</h2>
+                <p class="section-sub">Desde lo más clásico hasta lo más moderno. Cada diseño es completamente
+                    personalizable.</p>
+            </div>
+
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="boda">Boda</button>
+                <button class="filter-btn" data-filter="xv">XV Años</button>
+                <button class="filter-btn" data-filter="cumple">Cumpleaños</button>
+                <button class="filter-btn" data-filter="bautizo">Bautizo</button>
+                <button class="filter-btn" data-filter="otro">Otros</button>
+            </div>
+
+            <div class="cards-grid">
+
+                <!-- Card 1 – Boda -->
+                <div class="card" data-category="boda">
+                    <div class="card-img">
+                        <div class="card-preview clasico-preview">
+                            <div class="cp-flower">💍</div>
+                            <p class="cp-names">Isabella & Leonardo</p>
+                            <p class="cp-date">20 · Sep · 2026</p>
+                            <div class="cp-line"></div>
+                            <p class="cp-msg">Con todo nuestro amor</p>
+                        </div>
+                        <div class="card-badge">Más Popular</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Boda · Clásico</div>
+                        <h3 class="card-name">Eternidad Dorada</h3>
+                        <p class="card-desc">Elegancia atemporal con toques dorados y tipografía serif. Ideal para bodas
+                            formales.</p>
+                        <div class="card-footer">
+                            <span class="card-price">Desde <strong>$799 MXN</strong></span>
+                            <a href="templates/boda.html" target="_blank" class="btn-card">Ver Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 – XV Años -->
+                <div class="card" data-category="xv">
+                    <div class="card-img">
+                        <div class="card-preview xv-preview">
+                            <div class="cp-flower">👑</div>
+                            <p class="cp-names">Valeria Jiménez</p>
+                            <p class="cp-date">XV · Años · 15 · Mar · 2026</p>
+                            <div class="cp-line"></div>
+                            <p class="cp-msg">Mi noche mágica</p>
+                        </div>
+                        <div class="card-badge new-badge">Nuevo</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">XV Años · Romántico</div>
+                        <h3 class="card-name">Princesa de Ensueño</h3>
+                        <p class="card-desc">Rosados y lilas con destellos dorados. Animación de corona y tiara para una
+                            noche de cuento.</p>
+                        <div class="card-footer">
+                            <span class="card-price">Desde <strong>$749 MXN</strong></span>
+                            <a href="templates/xv-anos.html" target="_blank" class="btn-card">Ver Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 – Cumpleaños niño -->
+                <div class="card" data-category="cumple">
+                    <div class="card-img">
+                        <div class="card-preview cumple-preview">
+                            <div class="cp-flower">🎂</div>
+                            <p class="cp-names">¡Mateo cumple 7!</p>
+                            <p class="cp-date">04 · Abr · 2026</p>
+                            <div class="cp-line"></div>
+                            <p class="cp-msg">Ven a jugar conmigo 🎉</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Cumpleaños · Infantil</div>
+                        <h3 class="card-name">Fiesta de Estrellas</h3>
+                        <p class="card-desc">Colores vibrantes, confeti animado y globos. Perfecta para celebraciones
+                            infantiles temáticas.</p>
+                        <div class="card-footer">
+                            <span class="card-price">Desde <strong>$549 MXN</strong></span>
+                            <a href="templates/cumpleanos.html" target="_blank" class="btn-card">Ver Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 – Bautizo -->
+                <div class="card" data-category="bautizo">
+                    <div class="card-img">
+                        <div class="card-preview bautizo-preview">
+                            <div class="cp-flower">🕊️</div>
+                            <p class="cp-names">Bautizo de Santiago</p>
+                            <p class="cp-date">12 · Jun · 2026</p>
+                            <div class="cp-line"></div>
+                            <p class="cp-msg">Un ángel llega a nosotros</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Bautizo · Delicado</div>
+                        <h3 class="card-name">Ángel de Luz</h3>
+                        <p class="card-desc">Nubes suaves, paleta celeste y blanco perla. Lleno de ternura para recibir
+                            al nuevo integrante.</p>
+                        <div class="card-footer">
+                            <span class="card-price">Desde <strong>$599 MXN</strong></span>
+                            <a href="templates/bautizo.html" target="_blank" class="btn-card">Ver Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 – Boda Bohemia -->
+                <div class="card" data-category="boda">
+                    <div class="card-img">
+                        <div class="card-preview bohemio-preview">
+                            <div class="cp-flower">🌿</div>
+                            <p class="cp-names">Valentina & Tomás</p>
+                            <p class="cp-date">05 · Oct · 2026</p>
+                            <div class="cp-line"></div>
+                            <p class="cp-msg">Una historia de jardín</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Boda · Bohemio</div>
+                        <h3 class="card-name">Jardín Eterno</h3>
+                        <p class="card-desc">Natural y orgánico, con hojas, flores silvestres y paleta de tierra. Para
+                            bodas al aire libre.</p>
+                        <div class="card-footer">
+                            <span class="card-price">Desde <strong>$699 MXN</strong></span>
+                            <a href="templates/boda.html" target="_blank" class="btn-card">Ver Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 – Cumpleaños adulto -->
+                <div class="card" data-category="cumple">
+                    <div class="card-img">
+                        <div class="card-preview cumple2-preview">
+                            <div class="cp-flower">🥂</div>
+                            <p class="cp-names">Carmen cumple 30</p>
+                            <p class="cp-date">22 · Ago · 2026</p>
+                            <div class="cp-line"></div>
+                            <p class="cp-msg">¡Celebremos a lo grande!</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Cumpleaños · Adulto</div>
+                        <h3 class="card-name">Noche Chic</h3>
+                        <p class="card-desc">Negro, dorado y champán. Elegante y sofisticada para celebraciones de
+                            adultos con estilo.</p>
+                        <div class="card-footer">
+                            <span class="card-price">Desde <strong>$649 MXN</strong></span>
+                            <a href="templates/cumpleanos.html" target="_blank" class="btn-card">Ver Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 – Graduación -->
+                <div class="card" data-category="otro">
+                    <div class="card-img">
+                        <div class="card-preview grad-preview">
+                            <div class="cp-flower">🎓</div>
+                            <p class="cp-names">Ing. Andrea López</p>
+                            <p class="cp-date">18 · Jul · 2026</p>
+                            <div class="cp-line"></div>
+                            <p class="cp-msg">¡Lo logramos!</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Graduación · Moderno</div>
+                        <h3 class="card-name">Éxito & Futuro</h3>
+                        <p class="card-desc">Azul marino y dorado universitario. Diseño limpio y elegante para celebrar
+                            el gran logro académico.</p>
+                        <div class="card-footer">
+                            <span class="card-price">Desde <strong>$599 MXN</strong></span>
+                            <a href="templates/graduacion.html" target="_blank" class="btn-card">Ver Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 – Baby Shower -->
+                <div class="card" data-category="otro">
+                    <div class="card-img">
+                        <div class="card-preview baby-preview">
+                            <div class="cp-flower">🌟</div>
+                            <p class="cp-names">Baby Shower de Ana</p>
+                            <p class="cp-date">08 · May · 2026</p>
+                            <div class="cp-line"></div>
+                            <p class="cp-msg">¡Un tesoro viene en camino!</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Baby Shower · Tierno</div>
+                        <h3 class="card-name">Pequeño Milagro</h3>
+                        <p class="card-desc">Tonos menta, lila y amarillo suave. Nubes, estrellas y ternura para
+                            celebrar la llegada del bebé.</p>
+                        <div class="card-footer">
+                            <span class="card-price">Desde <strong>$549 MXN</strong></span>
+                            <a href="templates/baby-shower.html" target="_blank" class="btn-card">Ver Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 – XV Años Moderno -->
+                <div class="card" data-category="xv">
+                    <div class="card-img">
+                        <div class="card-preview xv2-preview">
+                            <div class="cp-flower">🌙</div>
+                            <p class="cp-names">Regina Morales</p>
+                            <p class="cp-date">XV · Años · 21 · Jun · 2026</p>
+                            <div class="cp-line"></div>
+                            <p class="cp-msg">Bajo las estrellas</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">XV Años · Moderno</div>
+                        <h3 class="card-name">Galaxia de Sueños</h3>
+                        <p class="card-desc">Cielos nocturnos, constelaciones animadas y paleta índigo/plata. Una
+                            celebración fuera de este mundo.</p>
+                        <div class="card-footer">
+                            <span class="card-price">Desde <strong>$799 MXN</strong></span>
+                            <a href="templates/xv-anos.html" target="_blank" class="btn-card">Ver Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="como-funciona">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">El proceso</span>
+                <h2 class="section-title">Tu invitación en 4 pasos</h2>
+                <p class="section-sub">Sencillo, rápido y hermoso. De tu idea a manos de tus invitados en menos de 24
+                    horas.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <div class="step-icon">🎨</div>
+                    <h3 class="step-title">Elige tu Estilo</h3>
+                    <p class="step-desc">Explora nuestra colección y selecciona el diseño que mejor se adapte a tu
+                        evento y personalidad.</p>
+                </div>
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <div class="connector-heart">♡</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <div class="step-icon">✍️</div>
+                    <h3 class="step-title">Personaliza</h3>
+                    <p class="step-desc">Comparte los detalles: nombre(s), fecha, lugar, fotos, música y todo lo que
+                        hace especial tu evento.</p>
+                </div>
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <div class="connector-heart">♡</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <div class="step-icon">⚡</div>
+                    <h3 class="step-title">Recibe tu Link</h3>
+                    <p class="step-desc">En menos de 24 horas recibirás tu invitación digital lista con un link único y
+                        elegante.</p>
+                </div>
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <div class="connector-heart">♡</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">04</div>
+                    <div class="step-icon">📤</div>
+                    <h3 class="step-title">Comparte</h3>
+                    <p class="step-desc">Envía tu link por WhatsApp, Instagram, email o cualquier red social al
+                        instante. Sin costo de envío.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonios">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Testimonios</span>
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+            </div>
+            <div class="testimonials-track" id="testimonialsTrack">
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"Para los XV de mi hija quedamos encantadas. La animación de la corona era
+                        simplemente mágica. ¡Todos los invitados preguntaron dónde la hicimos!"</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar">S</div>
+                        <div>
+                            <p class="testi-name">Sofía Ramírez</p>
+                            <p class="testi-date">XV Años · Marzo 2025</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"La invitación de nuestra boda fue un hit total. El proceso fue súper
+                        sencillo y el resultado superó todas nuestras expectativas."</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar">M</div>
+                        <div>
+                            <p class="testi-name">Mateo y Valeria</p>
+                            <p class="testi-date">Boda · Enero 2025</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"La usé para el cumpleaños 50 de mi mamá. Entrega en menos de 12 horas,
+                        soporte increíble y un diseño que parecía de revista."</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar">L</div>
+                        <div>
+                            <p class="testi-name">Lucía Fernández</p>
+                            <p class="testi-date">Cumpleaños · Abril 2025</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"Para el bautizo de mi hijo fue perfecta. Tonos suaves y preciosos. Ahorramos
+                        en impresos y llegamos a todos al instante."</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar">C</div>
+                        <div>
+                            <p class="testi-name">Carmen y Andrés</p>
+                            <p class="testi-date">Bautizo · Junio 2025</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"Para mi graduación quería algo diferente. La invitación digital fue un tema
+                        de conversación en toda la ceremonia. ¡Única!"</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar">A</div>
+                        <div>
+                            <p class="testi-name">Andrea López</p>
+                            <p class="testi-date">Graduación · Julio 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="paquetes">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Paquetes</span>
+                <h2 class="section-title">Inversión que vale la pena</h2>
+                <p class="section-sub">Sin costos ocultos. Un solo pago, recuerdos para siempre.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-tag">Esencial</div>
+                    <div class="price-amount">$549 <span>MXN</span></div>
+                    <ul class="price-features">
+                        <li>✓ 1 diseño a elegir</li>
+                        <li>✓ Personalización básica</li>
+                        <li>✓ Link único por 1 año</li>
+                        <li>✓ RSVP integrado</li>
+                        <li>✓ Soporte por email</li>
+                        <li class="muted">✗ Música de fondo</li>
+                        <li class="muted">✗ Galería de fotos</li>
+                        <li class="muted">✗ Mapa interactivo</li>
+                    </ul>
+                    <a href="#contacto" class="btn-outline">Elegir Plan</a>
+                </div>
+                <div class="price-card featured-price">
+                    <div class="featured-ribbon">⭐ Más Elegido</div>
+                    <div class="price-tag">Premium</div>
+                    <div class="price-amount">$849 <span>MXN</span></div>
+                    <ul class="price-features">
+                        <li>✓ Todos los diseños</li>
+                        <li>✓ Personalización completa</li>
+                        <li>✓ Link único por 2 años</li>
+                        <li>✓ RSVP + contador de invitados</li>
+                        <li>✓ Música de fondo</li>
+                        <li>✓ Galería de 20 fotos</li>
+                        <li>✓ Mapa interactivo</li>
+                        <li>✓ Soporte prioritario 24/7</li>
+                    </ul>
+                    <a href="#contacto" class="btn-primary">Elegir Plan</a>
+                </div>
+                <div class="price-card">
+                    <div class="price-tag">Luxe</div>
+                    <div class="price-amount">$1,299 <span>MXN</span></div>
+                    <ul class="price-features">
+                        <li>✓ Todo en Premium</li>
+                        <li>✓ Animaciones exclusivas</li>
+                        <li>✓ Video de apertura</li>
+                        <li>✓ Galería ilimitada</li>
+                        <li>✓ Contador regresivo</li>
+                        <li>✓ Libro de firmas digital</li>
+                        <li>✓ Diseño exclusivo único</li>
+                        <li>✓ Gestión de invitados VIP</li>
+                    </ul>
+                    <a href="#contacto" class="btn-outline">Elegir Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <div class="cta-deco">🎊</div>
+            <h2 class="cta-title">¿Listo para crear la invitación<br /><em>perfecta para tu evento?</em></h2>
+            <p class="cta-sub">Únete a más de 3,800 clientes que eligieron una invitación virtual única y memorable.</p>
+            <a href="#contacto" class="btn-primary btn-large">Crear mi Invitación</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Contacto</span>
+                <h2 class="section-title">Empecemos a crear juntos</h2>
+                <p class="section-sub">Cuéntanos de tu evento y nosotros lo convertimos en arte digital. ¡Te respondemos
+                    en menos de 2 horas!</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-form-wrap">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label>Tipo de evento</label>
+                            <select id="eventType" required>
+                                <option value="">Selecciona el tipo de evento...</option>
+                                <option>💍 Boda</option>
+                                <option>👑 XV Años</option>
+                                <option>🎂 Cumpleaños Infantil</option>
+                                <option>🎂 Cumpleaños Adulto</option>
+                                <option>🕊️ Bautizo</option>
+                                <option>🎓 Graduación</option>
+                                <option>🌟 Baby Shower</option>
+                                <option>🥂 Aniversario</option>
+                                <option>🎪 Fiesta Temática</option>
+                                <option>🏢 Evento Corporativo</option>
+                                <option>🎉 Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Tu nombre</label>
+                                <input type="text" id="hostName" placeholder="Ej: María García" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre del festejado(a)</label>
+                                <input type="text" id="honoree" placeholder="Ej: Valeria, Sofía & Carlos..." required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha del evento</label>
+                            <input type="date" id="eventDate" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Correo electrónico</label>
+                            <input type="email" id="email" placeholder="tu@correo.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label>WhatsApp</label>
+                            <input type="tel" id="phone" placeholder="+52 555 123 4567" />
+                        </div>
+                        <div class="form-group">
+                            <label>Colección de interés</label>
+                            <select id="collection">
+                                <option value="">Selecciona una colección...</option>
+                                <optgroup label="Boda">
+                                    <option>Eternidad Dorada</option>
+                                    <option>Jardín Eterno</option>
+                                    <option>Blanco Infinito</option>
+                                    <option>Pétalos de Rosa</option>
+                                </optgroup>
+                                <optgroup label="XV Años">
+                                    <option>Princesa de Ensueño</option>
+                                    <option>Galaxia de Sueños</option>
+                                </optgroup>
+                                <optgroup label="Cumpleaños">
+                                    <option>Fiesta de Estrellas (Infantil)</option>
+                                    <option>Noche Chic (Adulto)</option>
+                                </optgroup>
+                                <optgroup label="Otros eventos">
+                                    <option>Ángel de Luz (Bautizo)</option>
+                                    <option>Éxito & Futuro (Graduación)</option>
+                                    <option>Pequeño Milagro (Baby Shower)</option>
+                                </optgroup>
+                                <option>Diseño personalizado / Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Cuéntanos de tu evento</label>
+                            <textarea id="message" rows="4"
+                                placeholder="¿Qué tiene de especial tu celebración? Colores, temáticas, ideas..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary btn-full">
+                            <span>Enviar Consulta</span>
+                            <span class="btn-icon">🎉</span>
+                        </button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">📧</div>
+                        <h4>Email</h4>
+                        <p>hola@invitur.com</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">💬</div>
+                        <h4>WhatsApp</h4>
+                        <p>+52 55 1234 5678</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">⏰</div>
+                        <h4>Horario</h4>
+                        <p>Lun – Sáb · 9am – 8pm</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📍</div>
+                        <h4>Ubicación</h4>
+                        <p>Ciudad de México, México</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-btn">📸 Instagram</a>
+                        <a href="#" class="social-btn">🎵 TikTok</a>
+                        <a href="#" class="social-btn">📌 Pinterest</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="nav-logo">
+                    <span class="logo-script">In</span><span class="logo-text">vitur</span>
+                </a>
+                <p class="footer-tagline">Haciendo cada celebración memorable, un pixel a la vez.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h5>Servicios</h5>
+                    <a href="#">Invitaciones Digitales</a>
+                    <a href="#">RSVP Online</a>
+                    <a href="#">Galería Virtual</a>
+                    <a href="#">Countdown Personalizado</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Eventos</h5>
+                    <a href="#">Bodas</a>
+                    <a href="#">XV Años</a>
+                    <a href="#">Cumpleaños</a>
+                    <a href="#">Bautizos</a>
+                    <a href="#">Baby Shower</a>
+                    <a href="#">Graduaciones</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Empresa</h5>
+                    <a href="#">Nosotros</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Preguntas Frecuentes</a>
+                    <a href="#">Contacto</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Invitur. Hecho con 💕 en México.</p>
+            <div class="footer-legal">
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Toast -->
+    <div class="toast" id="toast">
+        <span>🎉 ¡Mensaje enviado! Te contactaremos muy pronto.</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
