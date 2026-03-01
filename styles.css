@@ -85,6 +85,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 body {
@@ -93,6 +94,7 @@ body {
     color: var(--text-primary);
     transition: background-color var(--transition), color var(--transition);
     overflow-x: hidden;
+    max-width: 100vw;
     line-height: 1.6;
 }
 
@@ -2281,13 +2283,22 @@ a.btn-card {
     }
 
     /* ── Contact ── */
+    .contact .section-container {
+        padding: 60px 16px;
+    }
+
     .contact-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 24px;
     }
 
     .contact-form-wrap {
-        padding: 24px 18px;
+        padding: 20px 16px;
+        border-radius: var(--radius);
+    }
+
+    .contact-form {
+        gap: 14px;
     }
 
     .form-row {
@@ -2295,14 +2306,48 @@ a.btn-card {
         gap: 0;
     }
 
+    .form-group label {
+        font-size: 0.76rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 0.92rem;
+    }
+
     .contact-info {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 14px;
+        gap: 10px;
+    }
+
+    .info-card {
+        padding: 14px 12px;
+        gap: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .info-icon {
+        font-size: 1.2rem;
     }
 
     .social-links {
         grid-column: 1 / -1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .social-btn {
+        flex: 1;
+        justify-content: center;
+        min-width: 90px;
+        font-size: 0.78rem;
+        padding: 8px 10px;
     }
 
     /* ── Footer ── */
