@@ -1155,17 +1155,7 @@ select {
 .card-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-}
-
-.card-price {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-}
-
-.card-price strong {
-    color: var(--accent);
-    font-size: 1rem;
+    justify-content: center;
 }
 
 .btn-card,
@@ -2174,13 +2164,7 @@ a.btn-card {
     }
 
     .card-footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .card-price {
-        font-size: 0.82rem;
+        justify-content: center;
     }
 
     .btn-card {
