@@ -2368,4 +2368,17 @@ a.btn-card {
     .footer-links {
         grid-template-columns: 1fr 1fr;
     }
+
+    /* Cards: tighter on tiny phones */
+    .card-img {
+        height: 120px;
+    }
+
+    .card-name {
+        font-size: 0.88rem;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
 }
