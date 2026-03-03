@@ -209,18 +209,46 @@ contactForm.addEventListener('submit', (e) => {
     btn.disabled = true;
     btn.innerHTML = '<span>Enviando...</span> <span class="btn-icon">⏳</span>';
 
-    // Simulate sending (replace with real API call)
-    setTimeout(() => {
-        btn.innerHTML = '<span>¡Enviado!</span> <span class="btn-icon">✅</span>';
-        showToast();
-        contactForm.reset();
+    // Recolectar datos del formulario
+    const formData = new FormData();
+    formData.append("Tipo de evento", document.getElementById('eventType').value);
+    formData.append("Nombre", document.getElementById('hostName').value);
+    formData.append("Festejado(a)", document.getElementById('honoree').value);
+    formData.append("Fecha", document.getElementById('eventDate').value);
+    formData.append("Email", document.getElementById('email').value);
+    formData.append("WhatsApp", document.getElementById('phone').value);
+    formData.append("Colección", document.getElementById('collection').value);
+    formData.append("Mensaje", document.getElementById('message').value);
+    formData.append("_captcha", "false"); // Desactiva el captcha para mejor experiencia
+    formData.append("_template", "table"); // Formato de tabla en el correo
 
-        setTimeout(() => {
-            btn.disabled = false;
-            btn.innerHTML = '<span>Enviar Consulta</span> <span class="btn-icon">💌</span>';
-        }, 3500);
-    }, 1500);
+    // Enviar correo mediante FormSubmit
+    fetch("https://formsubmit.co/ajax/emiliano.d.ferrusca@gmail.com", {
+        method: "POST",
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            btn.innerHTML = '<span>¡Enviado!</span> <span class="btn-icon">✅</span>';
+            showToast();
+            contactForm.reset();
+
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = '<span>Enviar Consulta</span> <span class="btn-icon">🎉</span>';
+            }, 3500);
+        })
+        .catch(error => {
+            console.error("Error al enviar el formulario:", error);
+            btn.innerHTML = '<span>Error al enviar</span> <span class="btn-icon">❌</span>';
+
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = '<span>Intentar de nuevo</span> <span class="btn-icon">🔄</span>';
+            }, 3500);
+        });
 });
+
 
 function showToast() {
     toast.classList.add('show');
