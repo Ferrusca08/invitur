@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout Seguro | Invitur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&family=Great+Vibes&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .checkout-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 40px;
+            background: var(--bg-primary);
+        }
+        .checkout-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+        .order-summary {
+            padding-right: 40px;
+            border-right: 1px solid var(--border-color);
+        }
+        .order-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+        .plan-box {
+            background: var(--bg-primary);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .plan-name {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .plan-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--primary-color);
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+        .plan-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+        .secure-badge svg {
+            width: 20px;
+            height: 20px;
+            color: #10b981;
+        }
+        .payment-form-wrap {
+            padding-left: 20px;
+        }
+        .payment-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(206, 153, 146, 0.2);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .btn-pay {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 900px) {
+            .checkout-wrapper {
+                grid-template-columns: 1fr;
+                gap: 0;
+                padding: 30px 20px;
+            }
+            .order-summary {
+                padding-right: 0;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 30px;
+                margin-bottom: 30px;
+            }
+            .payment-form-wrap {
+                padding-left: 0;
+            }
+        }
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .nav-back:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-script">In</span><span class="logo-text">vitur</span>
+            </a>
+            <a href="index.html" class="nav-back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Volver
+            </a>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <div class="checkout-wrapper fade-up">
+            <!-- Left Side: Summary -->
+            <div class="order-summary">
+                <h1 class="order-title">Resumen de tu pedido</h1>
+                <div class="plan-box">
+                    <div class="plan-name" id="planName">Paquete Premium</div>
+                    <div class="plan-price" id="planPrice">$849 <span style="font-size: 1.2rem; font-family: 'Lato', sans-serif;">MXN</span></div>
+                    <div class="plan-desc" id="planDesc">Todos los diseños, personalización completa, link único por 2 años, RSVP y música de fondo.</div>
+                </div>
+                <div class="secure-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span>Pago 100% seguro y encriptado. No guardamos los datos de tu tarjeta.</span>
+                </div>
+            </div>
+
+            <!-- Right Side: Form -->
+            <div class="payment-form-wrap">
+                <h2 class="payment-title">Detalles de Pago</h2>
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label>Nombre en la Tarjeta</label>
+                        <input type="text" placeholder="Ej: María García" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Número de Tarjeta</label>
+                        <input type="text" placeholder="0000 0000 0000 0000" maxlength="19" id="cardNumber" required />
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Fecha Exp. (MM/AA)</label>
+                            <input type="text" placeholder="MM/AA" maxlength="5" id="cardExpiry" required />
+                        </div>
+                        <div class="form-group">
+                            <label>CVC</label>
+                            <input type="text" placeholder="123" maxlength="4" required />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary btn-pay">Pagar Ahora</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Toast -->
+    <div class="toast" id="toast">
+        <span>✅ ¡Pago procesado con éxito! Redirigiendo...</span>
+    </div>
+
+    <script>
+        // Formatear tarjeta
+        document.getElementById('cardNumber').addEventListener('input', function (e) {
+            var target = e.target;
+            var position = target.selectionEnd;
+            var length = target.value.length;
+            target.value = target.value.replace(/[^\d]/g, '').replace(/(.{4})/g, '$1 ').trim();
+            target.selectionEnd = position += ((target.value.charAt(position - 1) === ' ' && target.value.charAt(length - 1) !== ' ' && length !== target.value.length) ? 1 : 0);
+        });
+
+        // Formatear fecha
+        document.getElementById('cardExpiry').addEventListener('input', function (e) {
+            var target = e.target;
+            target.value = target.value.replace(/[^\d]/g, '').replace(/(.{2})/, '$1/').trim();
+            if (target.value.length > 5) target.value = target.value.slice(0, 5);
+        });
+
+        // Lógica de planes
+        const plans = {
+            'esencial': {
+                name: 'Paquete Esencial',
+                price: '$549',
+                desc: '1 diseño a elegir, personalización básica, link único por 1 año y RSVP integrado.'
+            },
+            'premium': {
+                name: 'Paquete Premium',
+                price: '$849',
+                desc: 'Todos los diseños, personalización completa, link único por 2 años, RSVP, música de fondo y galería.'
+            },
+            'luxe': {
+                name: 'Paquete Luxe',
+                price: '$1,299',
+                desc: 'Todo en Premium, animaciones exclusivas, video de apertura, libro de firmas digital y diseño exclusivo.'
+            }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const planKey = urlParams.get('plan') || 'premium';
+        const plan = plans[planKey] || plans['premium'];
+
+        document.getElementById('planName').textContent = plan.name;
+        document.getElementById('planPrice').innerHTML = `${plan.price} <span style="font-size: 1.2rem; font-family: 'Lato', sans-serif;">MXN</span>`;
+        document.getElementById('planDesc').textContent = plan.desc;
+
+        // Simulador de pago
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.btn-pay');
+            btn.innerHTML = 'Procesando...';
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                btn.innerHTML = '¡Pago Exitoso!';
+                btn.style.background = '#10b981';
+                btn.style.borderColor = '#10b981';
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2500);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
