@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Invitur Editor Pro</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            margin: 0; 
+            display: flex; 
+            height: 100vh; 
+            background: #f0f2f5; 
+            font-family: 'Lato', sans-serif;
+            overflow: hidden;
+        }
+        .sidebar { 
+            width: 280px; 
+            background: #1e293b; 
+            color: #f8fafc; 
+            padding: 24px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 16px; 
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+        .sidebar-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sidebar label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .sidebar select, .sidebar button { 
+            padding: 12px; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 1rem;
+            cursor: pointer; 
+            font-family: 'Lato', sans-serif;
+            transition: all 0.2s;
+        }
+        .sidebar select {
+            background: #334155;
+            color: white;
+            outline: none;
+        }
+        .sidebar button {
+            background: #3b82f6;
+            color: white;
+            font-weight: 700;
+        }
+        .sidebar button:hover { background: #2563eb; }
+        
+        .sidebar .btn-outline {
+            background: transparent;
+            border: 2px solid #334155;
+            color: #e2e8f0;
+        }
+        .sidebar .btn-outline:hover {
+            border-color: #cbd5e1;
+            color: #fff;
+        }
+        
+        .sidebar .btn-success { background: #10b981; margin-top: 20px; }
+        .sidebar .btn-success:hover { background: #059669; }
+
+        hr { border: 0; border-top: 1px solid #334155; width: 100%; margin: 10px 0; }
+        
+        .canvas-area { 
+            flex-grow: 1; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 40px; 
+            position: relative;
+        }
+        
+        /* Mobile phone mockup frame */
+        .device-frame {
+            width: 414px;
+            height: 896px; /* iPhone Max size ratio approx */
+            background: #fff;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 12px solid #0f172a;
+            overflow: hidden;
+            position: relative;
+            transform-origin: center center;
+        }
+        
+        #canvas-frame { 
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+        }
+
+        .hidden { display: none; }
+        
+        .controls-hint {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-size: 0.85rem;
+            color: #334155;
+            pointer-events: none;
+        }
+
+        /* Scaling for smaller screens */
+        @media (max-height: 950px) {
+            .device-frame { transform: scale(0.85); }
+        }
+        @media (max-height: 800px) {
+            .device-frame { transform: scale(0.7); }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <span>✨</span> Invitur Editor
+        </div>
+        
+        <label>1. Plantilla Base</label>
+        <select id="template-select">
+            <option value="templates/boda.html">Boda Clásica</option>
+            <option value="templates/xv-anos.html">XV Años</option>
+            <option value="templates/baby-shower.html">Baby Shower</option>
+            <option value="templates/cumpleanos.html">Cumpleaños Infantil</option>
+            <option value="templates/bautizo.html">Bautizo</option>
+            <option value="templates/graduacion.html">Graduación</option>
+        </select>
+        <button id="load-btn">Cargar Plantilla</button>
+        
+        <hr>
+        
+        <label>2. Herramientas Libres</label>
+        <button id="add-text-btn" class="btn-outline">📝 Añadir Texto</button>
+        <button id="add-img-btn" class="btn-outline">🖼️ Subir Imagen</button>
+        <input type="file" id="img-upload" accept="image/*" class="hidden">
+        
+        <hr>
+        
+        <label>3. Guardado</label>
+        <button id="save-btn" class="btn-success">💾 Guardar Proyecto</button>
+        <button id="load-save-btn" class="btn-outline">📂 Cargar Último Guardado</button>
+        <button id="download-btn" class="btn-outline" style="margin-top:0;">⬇️ Descargar HTML</button>
+    </div>
+    
+    <div class="canvas-area">
+        <div class="device-frame">
+            <iframe id="canvas-frame"></iframe>
+        </div>
+        <div class="controls-hint">
+            <strong>Controles del Editor:</strong><br><br>
+            • 🖱️ <b>Doble clic</b> en cualquier texto para editarlo.<br>
+            • ✋ <b>Arrastra</b> los nuevos textos e imágenes para moverlos.<br>
+            • ❌ <b>Tecla Delete/Backspace</b> para borrar el elemento seleccionado.
+        </div>
+    </div>
+
+    <script>
+        const iframe = document.getElementById('canvas-frame');
+        let currentDoc = null;
+        let isDragging = false;
+        let draggedElement = null;
+        let offsetX = 0, offsetY = 0;
+        let activeElement = null;
+
+        // Cargar plantilla desde URL
+        document.getElementById('load-btn').onclick = async () => {
+            const url = document.getElementById('template-select').value;
+            try {
+                const res = await fetch(url);
+                const html = await res.text();
+                loadHTMLToIframe(html);
+            } catch (err) {
+                alert("Error al cargar la plantilla.");
+            }
+        };
+
+        // Función central para inyectar HTML y activar el editor
+        function loadHTMLToIframe(htmlContent) {
+            const doc = iframe.contentWindow.document;
+            doc.open();
+            doc.write(htmlContent);
+            doc.close();
+            
+            // Esperar un momento a que el DOM del iframe se parsee
+            setTimeout(() => {
+                initEditor(iframe.contentWindow.document);
+            }, 500);
+        }
+
+        // Inicializar la lógica del editor dentro del iframe
+        function initEditor(doc) {
+            currentDoc = doc;
+
+            // Inyectar estilos para los elementos draggables
+            const style = doc.createElement('style');
+            style.innerHTML = `
+                .invitur-draggable {
+                    position: absolute !important;
+                    cursor: move;
+                    z-index: 9999;
+                    user-select: none;
+                }
+                .invitur-draggable:hover {
+                    outline: 2px dashed #3b82f6;
+                }
+                .invitur-editing {
+                    outline: 2px solid #10b981 !important;
+                    cursor: text !important;
+                    user-select: auto !important;
+                }
+                .invitur-selected {
+                    outline: 2px solid #3b82f6;
+                }
+            `;
+            doc.head.appendChild(style);
+
+            // 1. WYSIWYG: Doble clic para editar cualquier texto existente o nuevo
+            doc.body.addEventListener('dblclick', (e) => {
+                // Prevenir edición en contenedores gigantes
+                const tags = ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'SPAN', 'DIV', 'A', 'BUTTON'];
+                if (tags.includes(e.target.tagName)) {
+                    e.preventDefault();
+                    e.target.contentEditable = "true";
+                    e.target.classList.add('invitur-editing');
+                    e.target.focus();
+                }
+            });
+
+            // Quitar modo edición al hacer clic fuera o perder foco
+            doc.body.addEventListener('blur', (e) => {
+                if(e.target.contentEditable === "true") {
+                    e.target.contentEditable = "false";
+                    e.target.classList.remove('invitur-editing');
+                }
+            }, true);
+
+            // Seleccionar elemento activo (para borrarlo)
+            doc.body.addEventListener('click', (e) => {
+                if (activeElement) activeElement.classList.remove('invitur-selected');
+                if (e.target.classList.contains('invitur-draggable') || e.target.tagName === 'IMG') {
+                    activeElement = e.target;
+                    activeElement.classList.add('invitur-selected');
+                } else {
+                    activeElement = null;
+                }
+            });
+
+            // Borrar con teclado
+            doc.addEventListener('keydown', (e) => {
+                if ((e.key === 'Delete' || e.key === 'Backspace') && activeElement) {
+                    if (activeElement.contentEditable === "true") return; // No borrar si está escribiendo
+                    activeElement.remove();
+                    activeElement = null;
+                }
+            });
+
+            // 2. Drag & Drop para elementos creados por el usuario
+            doc.body.addEventListener('mousedown', (e) => {
+                const el = e.target;
+                if (el.classList.contains('invitur-draggable')) {
+                    if(el.contentEditable === "true") return; // Dejar escribir
+                    
+                    isDragging = true;
+                    draggedElement = el;
+                    
+                    // Calcular offset basado en el zoom/scroll
+                    const rect = draggedElement.getBoundingClientRect();
+                    offsetX = e.clientX - rect.left;
+                    offsetY = e.clientY - rect.top;
+                    
+                    // Prevenir selección de texto accidental al arrastrar
+                    e.preventDefault(); 
+                }
+            });
+
+            doc.body.addEventListener('mousemove', (e) => {
+                if (isDragging && draggedElement) {
+                    // Prevenir el comportamiento por defecto (como drag de imágenes nativo)
+                    e.preventDefault();
+                    
+                    // Obtener el scroll del iframe
+                    const scrollX = doc.documentElement.scrollLeft || doc.body.scrollLeft;
+                    const scrollY = doc.documentElement.scrollTop || doc.body.scrollTop;
+                    
+                    draggedElement.style.left = (e.clientX + scrollX - offsetX) + 'px';
+                    draggedElement.style.top = (e.clientY + scrollY - offsetY) + 'px';
+                }
+            });
+
+            doc.body.addEventListener('mouseup', () => {
+                isDragging = false;
+                draggedElement = null;
+            });
+            
+            // Soltar fuera del documento (si el ratón sale del iframe)
+            doc.body.addEventListener('mouseleave', () => {
+                isDragging = false;
+                draggedElement = null;
+            });
+            
+            // Prevenir drag nativo de imagenes que rompe el custom drag
+            doc.body.addEventListener('dragstart', (e) => {
+                if (e.target.classList.contains('invitur-draggable')) {
+                    e.preventDefault();
+                }
+            });
+        }
+
+        // Agregar texto libre
+        document.getElementById('add-text-btn').onclick = () => {
+            if (!currentDoc) return alert("Carga una plantilla primero.");
+            const div = currentDoc.createElement('div');
+            div.className = 'invitur-draggable';
+            div.textContent = 'Doble clic para editar texto';
+            
+            // Obtener scroll actual para que aparezca en el centro de la vista
+            const scrollY = currentDoc.documentElement.scrollTop || currentDoc.body.scrollTop;
+            
+            div.style.top = (scrollY + 200) + 'px';
+            div.style.left = '50px';
+            div.style.fontSize = '24px';
+            div.style.color = '#3a2a1a';
+            div.style.fontFamily = "'Cormorant Garamond', serif";
+            div.style.padding = '10px';
+            
+            currentDoc.body.appendChild(div);
+        };
+
+        // Agregar imagen libre
+        const imgInput = document.getElementById('img-upload');
+        document.getElementById('add-img-btn').onclick = () => {
+            if (!currentDoc) return alert("Carga una plantilla primero.");
+            imgInput.click();
+        };
+
+        imgInput.onchange = (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const img = currentDoc.createElement('img');
+                img.src = event.target.result;
+                img.className = 'invitur-draggable';
+                
+                const scrollY = currentDoc.documentElement.scrollTop || currentDoc.body.scrollTop;
+                img.style.top = (scrollY + 200) + 'px';
+                img.style.left = '50px';
+                img.style.width = '200px';
+                img.style.borderRadius = '10px';
+                img.style.boxShadow = '0 10px 20px rgba(0,0,0,0.15)';
+                
+                currentDoc.body.appendChild(img);
+                imgInput.value = ""; // reset
+            };
+            reader.readAsDataURL(file);
+        };
+
+        // Funciones de Guardado (Local Storage por ahora)
+        document.getElementById('save-btn').onclick = () => {
+            if (!currentDoc) return alert("No hay nada que guardar.");
+            // Limpiar clases de seleccion antes de guardar
+            if (activeElement) activeElement.classList.remove('invitur-selected');
+            
+            const htmlContent = currentDoc.documentElement.outerHTML;
+            localStorage.setItem('invitur_saved_project', htmlContent);
+            
+            const btn = document.getElementById('save-btn');
+            btn.textContent = "✅ Guardado";
+            setTimeout(() => btn.textContent = "💾 Guardar Proyecto", 2000);
+        };
+
+        document.getElementById('load-save-btn').onclick = () => {
+            const savedHtml = localStorage.getItem('invitur_saved_project');
+            if (savedHtml) {
+                loadHTMLToIframe(savedHtml);
+            } else {
+                alert("No tienes ningún proyecto guardado.");
+            }
+        };
+
+        // Descargar HTML
+        document.getElementById('download-btn').onclick = () => {
+            if (!currentDoc) return alert("Carga o crea un proyecto primero.");
+            if (activeElement) activeElement.classList.remove('invitur-selected');
+            
+            const htmlContent = currentDoc.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'mi-invitacion.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        };
+
+        // Cargar plantilla por defecto al inicio
+        window.onload = () => {
+            document.getElementById('load-btn').click();
+        };
+
+    </script>
+</body>
+</html>
