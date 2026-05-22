@@ -2496,3 +2496,244 @@ a.btn-card {
     height: 26px;
   }
 }
+
+/* ============================================
+   Sección de Negocios Locales (#negocios)
+   ============================================ */
+.businesses-section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.biz-showcase-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.biz-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.biz-card-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: 0 10px 30px var(--shadow);
+    transition: var(--transition);
+    position: relative;
+}
+
+.biz-card-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    padding: 1.5px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-gold) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.biz-card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px var(--shadow-card);
+    border-color: transparent;
+}
+
+.biz-card-item:hover::before {
+    opacity: 1;
+}
+
+.biz-card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+
+.biz-card-title {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.biz-card-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Mockup visuales específicos de Negocios */
+.biz-visual-mockup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.biz-visual-mockup .mockup-phone {
+    width: 240px;
+    height: 480px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.biz-preview-screen {
+    width: 100%;
+    height: 100%;
+    background: #FAF7F2;
+    display: flex;
+    flex-direction: column;
+    color: #2D221C;
+    font-family: 'Lato', sans-serif;
+    overflow: hidden;
+    padding: 24px 12px 12px;
+}
+
+.bps-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(197, 155, 108, 0.2);
+    margin-bottom: 12px;
+}
+
+.bps-logo {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.25rem;
+    color: #8e683f;
+    font-weight: bold;
+}
+
+.bps-menu {
+    font-size: 0.85rem;
+}
+
+.bps-hero {
+    background: linear-gradient(135deg, #f6efe6 0%, #e4cdae 100%);
+    border: 1px solid rgba(197, 155, 108, 0.2);
+    border-radius: 12px;
+    padding: 14px 10px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.bps-hero h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.bps-hero p {
+    font-size: 0.65rem;
+    color: #6e574c;
+    margin-bottom: 8px;
+}
+
+.bps-btn {
+    background: #8e683f;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+}
+
+.bps-services {
+    text-align: left;
+}
+
+.bps-services h5 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6e574c;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.bps-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border: 1px solid rgba(197, 155, 108, 0.15);
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 0.65rem;
+    margin-bottom: 6px;
+}
+
+/* Features Strip inside Business Section */
+.biz-features-strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 48px;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    padding: 24px 0;
+}
+
+.biz-feat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.biz-feat-item:hover {
+    transform: translateY(-2px);
+    background: var(--border);
+    color: var(--text-primary);
+}
+
+.biz-feat-icon {
+    font-size: 1rem;
+}
+
+/* Action Buttons inside Business Section */
+.biz-cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Responsivo para la sección de negocios */
+@media (max-width: 900px) {
+    .biz-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .biz-card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L'Élite Salon & Spa | Demo Negocio Local</title>
+    <meta name="description" content="Experimenta el máximo bienestar y cuidado personal en L'Élite. Servicios de spa, masajes, faciales y estilismo profesional." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&family=Great+Vibes&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg-primary: #fdfaf6;
+            --bg-secondary: #f6efe6;
+            --bg-card: #ffffff;
+            --text-primary: #2d221c;
+            --text-secondary: #6e574c;
+            --accent: #c59b6c;
+            --accent-light: #e4cdae;
+            --accent-dark: #8e683f;
+            --accent-rose: #d69885;
+            --border: rgba(197, 155, 108, 0.2);
+            --border-card: rgba(197, 155, 108, 0.12);
+            --shadow: rgba(110, 87, 76, 0.08);
+            --shadow-lg: rgba(110, 87, 76, 0.15);
+            --radius: 16px;
+            --radius-lg: 24px;
+            --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ── Header & Navbar ── */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(253, 250, 246, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 20px var(--shadow);
+            height: 70px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-script {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: var(--accent);
+            line-height: 0.8;
+        }
+
+        .logo-text {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .btn-booking {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(197, 155, 108, 0.3);
+            transition: var(--transition);
+        }
+
+        .btn-booking:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(197, 155, 108, 0.45);
+        }
+
+        /* ── Hero Section ── */
+        .hero {
+            min-height: 100vh;
+            padding: 140px 24px 80px;
+            background: radial-gradient(circle at top right, rgba(246, 239, 230, 0.6), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(214, 152, 133, 0.1), transparent 50%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 48px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(197, 155, 108, 0.1);
+            border: 1px solid var(--border);
+            color: var(--accent-dark);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--accent-rose);
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            max-width: 580px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 28px;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Hero visual (Spa simulation) */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .visual-circle {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--accent-light) 100%);
+            position: relative;
+            box-shadow: 0 20px 50px var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--border);
+        }
+
+        .visual-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: 0 15px 30px var(--shadow-lg);
+            backdrop-filter: blur(8px);
+            max-width: 220px;
+            animation: bob 6s ease-in-out infinite;
+        }
+
+        .card-top-right {
+            top: -20px;
+            right: -20px;
+            animation-delay: 0s;
+        }
+
+        .card-bottom-left {
+            bottom: -20px;
+            left: -20px;
+            animation-delay: 3s;
+        }
+
+        @keyframes bob {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .visual-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .visual-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .visual-desc {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        /* ── Info Strip ── */
+        .info-strip {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+        }
+
+        .info-strip-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            text-align: center;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .info-text h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        .info-text p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ── Section General ── */
+        .section {
+            padding: 100px 24px;
+        }
+
+        .section-alt {
+            background-color: var(--bg-secondary);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-sub {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* ── Services Grid ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            box-shadow: 0 10px 25px var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--shadow-lg);
+            border-color: rgba(197, 155, 108, 0.4);
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .srv-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .srv-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .srv-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .srv-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+            padding-top: 18px;
+            margin-top: auto;
+        }
+
+        .srv-duration {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .srv-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+        }
+
+        /* ── About & Gallery ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+        }
+
+        .gallery-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .gallery-box {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--accent-light) 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 10px 20px var(--shadow);
+            transition: var(--transition);
+        }
+
+        .gallery-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px var(--shadow-lg);
+        }
+
+        .gallery-box:nth-child(even) {
+            transform: translateY(20px);
+        }
+
+        .gallery-box:nth-child(even):hover {
+            transform: translateY(20px) scale(1.05);
+        }
+
+        /* ── Location & Hours ── */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 48px;
+            align-items: stretch;
+        }
+
+        .map-mock {
+            background: linear-gradient(145deg, #e3dacd, #cbbead);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+
+        .map-icon {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .map-mock h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .map-mock p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            max-width: 320px;
+            margin-bottom: 28px;
+        }
+
+        .map-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hours-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+
+        .hours-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .hours-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .hours-table td {
+            padding: 12px 0;
+            font-size: 0.95rem;
+        }
+
+        .hours-table td:last-child {
+            text-align: right;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+
+        .hours-table tr.today {
+            color: var(--accent-dark);
+            font-weight: 700;
+        }
+
+        .hours-table tr.today td:last-child {
+            color: var(--accent-dark);
+        }
+
+        /* ── Reviews ── */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .review-stars {
+            color: #d4af37;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+        }
+
+        .review-text {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .author-info h5 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .author-info p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: #201712;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 24px 30px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer .logo-script {
+            color: var(--accent-light);
+            font-size: 2.5rem;
+        }
+
+        footer .logo-text {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            margin-top: 24px;
+        }
+
+        /* ── WhatsApp Widget ── */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 99;
+            transition: var(--transition);
+            animation: pulse 2.5s infinite;
+        }
+
+        .whatsapp-widget:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-widget svg {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
+        }
+
+        /* ── MODAL ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(45, 34, 28, 0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            max-width: 480px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 25px 50px var(--shadow-lg);
+            animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid var(--border);
+        }
+
+        @keyframes modalIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--accent-light);
+            color: var(--accent-dark);
+        }
+
+        .modal h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .modal p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(197, 155, 108, 0.15);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: #fff;
+            padding: 14px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(197, 155, 108, 0.3);
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(197, 155, 108, 0.45);
+        }
+
+        /* ── TOAST ── */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #2d221c;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 48px;
+                text-align: center;
+            }
+            .hero-badge, .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .about-grid, .location-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .gallery-box:nth-child(even) {
+                transform: translateY(0px);
+            }
+            .gallery-box:nth-child(even):hover {
+                transform: scale(1.05);
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-script">L'Élite</span>
+                <span class="logo-text">Salon & Spa</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#servicios" class="nav-link">Servicios</a>
+                <a href="#nosotros" class="nav-link">Nosotros</a>
+                <a href="#ubicacion" class="nav-link">Ubicación</a>
+                <a href="#opiniones" class="nav-link">Opiniones</a>
+                <button class="btn-booking" onclick="openModal()">✨ Reservar Cita</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge">✨ Vive la experiencia premium</div>
+                <h1 class="hero-title">Revitaliza tu cuerpo,<br /><em>calma tu mente</em></h1>
+                <p class="hero-desc">
+                    Un oasis de relajación y belleza en el corazón de la ciudad. Permítenos consentirte con nuestros exclusivos masajes corporales, tratamientos faciales avanzados e innovadores servicios de estilismo diseñados especialmente para ti.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-booking" onclick="openModal()">Reservar Ahora</button>
+                    <a href="#servicios" class="btn-outline">Ver Servicios</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-circle">
+                    <span style="font-size: 7rem;">🌿</span>
+                    <div class="visual-card card-top-right">
+                        <span class="visual-icon">🧖‍♀️</span>
+                        <h4 class="visual-title">Cuidado Holístico</h4>
+                        <p class="visual-desc">Terapeutas profesionales certificados</p>
+                    </div>
+                    <div class="visual-card card-bottom-left">
+                        <span class="visual-icon">⭐️</span>
+                        <h4 class="visual-title">4.9/5 Estrellas</h4>
+                        <p class="visual-desc">Más de 1,200 reseñas de clientes felices</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Strip -->
+    <section class="info-strip">
+        <div class="info-strip-container">
+            <div class="info-item">
+                <span class="info-icon">⏰</span>
+                <div class="info-text">
+                    <h4>Horario de Atención</h4>
+                    <p>Lun - Sáb: 9:00 AM - 8:00 PM</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📞</span>
+                <div class="info-text">
+                    <h4>WhatsApp Directo</h4>
+                    <p>+52 56 1541 9178</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📍</span>
+                <div class="info-text">
+                    <h4>Ubicación Premium</h4>
+                    <p>Polanco, Ciudad de México</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="servicios">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Nuestras Experiencias</span>
+                <h2 class="section-title">Rituales y Servicios Destacados</h2>
+                <p class="section-sub">Selección de nuestros tratamientos más solicitados para el máximo descanso y rejuvenecimiento.</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <span class="srv-icon">💆‍♀️</span>
+                    <h3 class="srv-title">Masaje Relajante Completo</h3>
+                    <p class="srv-desc">Terapia corporal con aceites esenciales calientes para disolver tensiones, reducir el estrés y reestablecer la armonía.</p>
+                    <div class="srv-meta">
+                        <span class="srv-duration">60 minutos</span>
+                        <span class="srv-price">$750</span>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <span class="srv-icon">🧖‍♀️</span>
+                    <h3 class="srv-title">Facial Hidratación Profunda</h3>
+                    <p class="srv-desc">Tratamiento rejuvenecedor con ácido hialurónico y extractos orgánicos que devuelve luminosidad y elasticidad a tu rostro.</p>
+                    <div class="srv-meta">
+                        <span class="srv-duration">75 minutos</span>
+                        <span class="srv-price">$850</span>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <span class="srv-icon">💅</span>
+                    <h3 class="srv-title">Manicura & Pedicura Gel Luxe</h3>
+                    <p class="srv-desc">Exfoliación profunda con sales orgánicas, hidratación con parafina y aplicación de gel de larga duración.</p>
+                    <div class="srv-meta">
+                        <span class="srv-duration">90 minutos</span>
+                        <span class="srv-price">$600</span>
+                    </div>
+                </div>
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <span class="srv-icon">💇‍♀️</span>
+                    <h3 class="srv-title">Estilismo y Corte de Diseño</h3>
+                    <p class="srv-desc">Consulta personalizada de visajismo, lavado con masaje capilar orgánico y corte de vanguardia por estilistas expertos.</p>
+                    <div class="srv-meta">
+                        <span class="srv-duration">60 minutos</span>
+                        <span class="srv-price">$550</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section-alt" id="nosotros">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <span class="section-tag">Nuestro Refugio</span>
+                    <h3>El arte del cuidado personal en Polanco</h3>
+                    <p>En L'Élite, creemos que la belleza externa es un reflejo de la paz interior. Fundado con el compromiso de crear un espacio donde el tiempo se detiene, combinamos técnicas ancestrales de relajación con la ciencia estética más avanzada.</p>
+                    <p>Cada detalle en nuestras cabinas—desde la iluminación tenue, la aromaterapia curada y los terapeutas calificados—está diseñado para brindarte una escapada holística y personalizada de la rutina diaria.</p>
+                    <button class="btn-booking" onclick="openModal()">Conocer Más</button>
+                </div>
+                <div class="gallery-wrap">
+                    <div class="gallery-box">🌸</div>
+                    <div class="gallery-box">💆</div>
+                    <div class="gallery-box">🛁</div>
+                    <div class="gallery-box">✨</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Hours -->
+    <section class="section" id="ubicacion">
+        <div class="section-container">
+            <div class="location-grid">
+                <div class="map-mock">
+                    <span class="map-icon">📍</span>
+                    <h3>¿Cómo Llegar?</h3>
+                    <p>Av. Presidente Masaryk 410, Polanco, Miguel Hidalgo, 11560, Ciudad de México</p>
+                    <div class="map-actions">
+                        <a href="https://maps.google.com" target="_blank" class="btn-booking" style="background:#4285F4; box-shadow:none;">Abrir Google Maps</a>
+                        <a href="https://waze.com" target="_blank" class="btn-booking" style="background:#33CCFF; box-shadow:none;">Abrir en Waze</a>
+                    </div>
+                </div>
+                <div class="hours-card">
+                    <h3>Horarios del Santuario</h3>
+                    <table class="hours-table">
+                        <tr>
+                            <td>Lunes</td>
+                            <td>9:00 AM - 8:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Martes</td>
+                            <td>9:00 AM - 8:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Miércoles</td>
+                            <td>9:00 AM - 8:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Jueves</td>
+                            <td>9:00 AM - 8:00 PM</td>
+                        </tr>
+                        <tr class="today">
+                            <td>Viernes (Hoy)</td>
+                            <td>9:00 AM - 8:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Sábado</td>
+                            <td>9:00 AM - 6:00 PM</td>
+                        </tr>
+                        <tr style="color:var(--text-muted);">
+                            <td>Domingo</td>
+                            <td>Cerrado</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section section-alt" id="opiniones">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Testimonios</span>
+                <h2 class="section-title">Lo que dicen nuestras clientas</h2>
+                <p class="section-sub">Las opiniones reales de quienes han confiado su bienestar a nuestras manos.</p>
+            </div>
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"El masaje relajante fue de otro mundo. Las instalaciones son hermosas y súper limpias, la cabina tiene una temperatura perfecta y la música de fondo realmente te desconecta."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">LM</div>
+                        <div class="author-info">
+                            <h5>Laura Mendiola</h5>
+                            <p>Cliente Premium</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Mi cutis cambió por completo después del facial de hidratación profunda. Se nota la alta calidad de los productos orgánicos y el profesionalismo de la cosmetóloga. 100% recomendado."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">RG</div>
+                        <div class="author-info">
+                            <h5>Regina Gómez</h5>
+                            <p>Cliente Frecuente</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"El mejor servicio de manicura gel luxe de la zona. Dura semanas impecable, las exfoliaciones con sales naturales son súper relajantes. La atención al cliente es simplemente de 10."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">AC</div>
+                        <div class="author-info">
+                            <h5>Alejandra Castillo</h5>
+                            <p>Cliente Elite</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="section-container">
+            <a href="#" class="logo" style="align-items: center; margin-bottom: 20px;">
+                <span class="logo-script" style="font-size: 3rem;">L'Élite</span>
+                <span class="logo-text">Salon & Spa</span>
+            </a>
+            <p>Hecho con amor · Santuario Polanco · © 2026 L'Élite. Todos los derechos reservados.</p>
+            <p style="margin-top: 8px; font-size: 0.75rem; opacity: 0.5;">Plantilla Demostrativa de Invitur Negocios</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/525615419178?text=Hola%20L'Elite%20Spa!%20Me%20gustaria%20agendar%20un%20servicio" class="whatsapp-widget" target="_blank" aria-label="Chat WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.416 9.863-9.864.001-2.639-1.026-5.12-2.89-6.987C16.52 1.888 14.04.862 11.4.862c-5.436 0-9.86 4.417-9.863 9.864-.001 1.716.463 3.39 1.341 4.887l-.997 3.642 3.729-.978zm13.125-7.053c-.36-.18-2.128-1.05-2.457-1.17-.33-.12-.57-.18-.81.18-.24.36-.93 1.17-1.14 1.41-.21.24-.42.27-.78.09-.36-.18-1.52-.56-2.898-1.787-1.072-.957-1.796-2.14-2.007-2.5-.21-.36-.02-.555.16-.735.16-.16.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.81-1.95-1.11-2.672-.29-.705-.59-.612-.81-.623-.21-.011-.45-.011-.69-.011-.24 0-.63.09-.96.45-.33.36-1.26 1.23-1.26 3.002 0 1.77 1.29 3.48 1.47 3.72.18.24 2.54 3.878 6.155 5.44.86.372 1.53.593 2.053.76.864.275 1.65.236 2.272.144.693-.103 2.128-.87 2.427-1.71.3-.84.3-1.56.21-1.71-.09-.15-.33-.24-.69-.42z"/>
+        </svg>
+    </a>
+
+    <!-- Modal de Reserva -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <h3>Agenda Tu Cita Premium</h3>
+            <p>Completa tus datos y selecciona tu servicio favorito. Un agente de L'Élite te contactará por WhatsApp para confirmar tu cita.</p>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label>Tu Nombre</label>
+                    <input type="text" id="bkName" placeholder="Ej: María García" required />
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp de Contacto</label>
+                    <input type="tel" id="bkPhone" placeholder="Ej: +52 55 1234 5678" required />
+                </div>
+                <div class="form-group">
+                    <label>Selecciona el Servicio</label>
+                    <select id="bkService" required>
+                        <option value="">Selecciona uno...</option>
+                        <option value="Masaje Relajante">💆‍♀️ Masaje Relajante Completo ($750)</option>
+                        <option value="Facial Hidratación">🧖‍♀️ Facial Hidratación Profunda ($850)</option>
+                        <option value="Manicura & Pedicura">💅 Manicura & Pedicura Gel Luxe ($600)</option>
+                        <option value="Estilismo">💇‍♀️ Estilismo y Corte de Diseño ($550)</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Fecha</label>
+                        <input type="date" id="bkDate" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Horario</label>
+                        <select id="bkTime" required>
+                            <option value="">Selecciona...</option>
+                            <option>09:00 AM</option>
+                            <option>11:00 AM</option>
+                            <option>01:00 PM</option>
+                            <option>03:00 PM</option>
+                            <option>05:00 PM</option>
+                            <option>07:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">Confirmar Cita ✨</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast" id="toast">
+        <span>🎉 ¡Solicitud recibida! Te contactaremos muy pronto por WhatsApp.</span>
+    </div>
+
+    <script>
+        // Navbar Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Modal Logic
+        const overlay = document.getElementById('modalOverlay');
+        function openModal() {
+            overlay.classList.add('open');
+            // Pre-fill date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('bkDate').value = tomorrow.toISOString().split('T')[0];
+        }
+        function closeModal() {
+            overlay.classList.remove('open');
+        }
+
+        // Booking Form Submission
+        const form = document.getElementById('bookingForm');
+        const toast = document.getElementById('toast');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('.btn-submit');
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+
+            setTimeout(() => {
+                closeModal();
+                toast.classList.add('show');
+                btn.disabled = false;
+                btn.textContent = 'Confirmar Cita ✨';
+                form.reset();
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 4000);
+            }, 1200);
+        });
+
+        // Close modal on click outside
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeModal();
+        });
+    </script>
+</body>
+
+</html>

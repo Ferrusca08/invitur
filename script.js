@@ -87,7 +87,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.fade-up, .fade-right, .card, .step-card, .testi-card, .price-card, .info-card').forEach(el => {
+document.querySelectorAll('.fade-up, .fade-right, .card, .step-card, .testi-card, .price-card, .info-card, .biz-card-item, .biz-feat-item').forEach(el => {
     fadeObserver.observe(el);
 });
 
@@ -339,5 +339,30 @@ document.querySelectorAll('.btn-card').forEach(btn => {
         }, 150);
     });
 });
+
+// ── Cotizar Negocio Local Button Logic ────
+const btnCotizarBiz = document.getElementById('btnCotizarBiz');
+if (btnCotizarBiz) {
+    btnCotizarBiz.addEventListener('click', () => {
+        const eventTypeSelect = document.getElementById('eventType');
+        const contactSection = document.getElementById('contacto');
+        const navbar = document.getElementById('navbar');
+        
+        if (eventTypeSelect && contactSection) {
+            // Pre-select "Negocio Local" in the event dropdown
+            eventTypeSelect.value = 'Negocio Local';
+            
+            // Scroll to the contact section
+            const offset = navbar ? navbar.offsetHeight + 16 : 80;
+            const top = contactSection.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+            
+            // Focus on eventType input to highlight the action
+            setTimeout(() => {
+                eventTypeSelect.focus();
+            }, 800);
+        }
+    });
+}
 
 console.log('💌 LoveScript Studio — Loaded with love');
